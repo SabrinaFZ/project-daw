@@ -1,0 +1,41 @@
+.jumbotron{
+	background-color: #48D1CC;	
+	color: white;
+	text-shadow: 2px 2px #AFEEEE;
+}
+
+/* Style for buttons */
+.btn.outline{
+	background: none;
+}
+
+.btn-primary.outline {
+	border: 2px solid #48D1CC ;
+	color: #48D1CC ;
+	font-weight: bold;
+}
+
+/* Links */
+a, a:active{
+	color: #48D1CC;
+}
+
+a:hover, a:focus{
+	color: #48D1CC;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+/* Error and Success messages */
+.successMessage{
+	font-size: 20; 
+	font-weight:bold; 
+	color: #32CD32;
+	
+}
+
+.validation-message{
+	font-size: 20; 
+	font-weight:bold; 
+	color: #FF1C19;
+}
