@@ -33,15 +33,10 @@
 			  				<input type="text" th:field="*{email}" placeholder="Insert your email" class="form-control" />
 			  				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></p>
 				  		</div>
-				  		<div class="form-group">
-		  					<label> Name: </label>
-			  				<input type="text" th:field="*{name}" placeholder="Insert your name" class="form-control" />
-			  				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></p>
-				  		</div>
 				  		<div class="form-group">		  				
-		  					<label> Last Name: </label>
-			  				<input type="text" th:field="*{lastName}" placeholder="Insert your las name" class="form-control" />		  			
-				  			<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="validation-message"></p>
+		  					<label> Username: </label>
+			  				<input type="text" th:field="*{username}" placeholder="Insert your username" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></p>
 				  		</div>
 				  		<div class="form-group">
 		  					<label> Password: </label>

@@ -2,9 +2,13 @@ package org.sabrina.controller;
 
 import javax.validation.Valid;
 
+import org.sabrina.configuration.SecurityConfiguration;
 import org.sabrina.model.UserModel;
 import org.sabrina.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -37,9 +41,9 @@ public class LoginController {
 	public ModelAndView createUser(@Valid @ModelAttribute("user") UserModel user, BindingResult result, Model model){
 		ModelAndView modelAndView = new ModelAndView();
 		
-		UserModel userExists = userService.findUserByEmail(user.getEmail());
+		UserModel userExists = userService.findUserByUsername(user.getUsername());
 		if(userExists != null){
-			result.rejectValue("email", "error.user", "* There is already a user registered with the email provided");
+			result.rejectValue("username", "error.user", "* There is already a user registered with the username provided");
 		}
 		if(result.hasErrors()){
 			modelAndView.setViewName("/components/login/signup");
@@ -52,6 +56,14 @@ public class LoginController {
 		return modelAndView;		
 	}
 	
+	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
+	@RequestMapping(value="/home", method = RequestMethod.GET)
+	public ModelAndView home(){
+		System.out.println("paso2");
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("home");
+		return modelAndView;
+	}
 	
 	
 }
