@@ -1,9 +1,12 @@
 package org.sabrina.model;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
 import org.hibernate.validator.constraints.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity
 @Table(name="user")
@@ -19,23 +22,24 @@ public class UserModel {
 	private String email;	
 	@Length(min=5, message="*Your password must have at least 5 characters*")
 	@NotEmpty(message="*Please provide your password*")
-	@Transient
 	private String password;
-	@Column(name="status")
-	private int status;	
-	@Column(name="name")
-	@NotEmpty(message="*Please provide your name*")
-	private String name;
-	@Column(name="last_name")
-	@NotEmpty(message="*Please provide your last name*")
-	private String lastName;	
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<RolModel> roles;
+	@Column(name="username")
+	private String username;
+	
+	@ElementCollection (fetch = FetchType.EAGER)
+	private List<GrantedAuthority> roles;
 	
 	
 	//siempre se añade un constructor vacio
-	public UserModel(){		
+	public UserModel(String username, String password, String email, List<GrantedAuthority> roles){
+		this.username = username;
+		this.email=email;
+		this.password = new BCryptPasswordEncoder().encode(password);
+		this.roles=roles;
+	}
+	
+	public UserModel(){
+		
 	}
 
 
@@ -69,42 +73,22 @@ public class UserModel {
 	}
 
 
-	public int getStatus() {
-		return status;
+	public String getUsername() {
+		return username;
 	}
 
 
-	public void setStatus(int status) {
-		this.status = status;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-	public Set<RolModel> getRoles() {
+	public List<GrantedAuthority> getRoles() {
 		return roles;
 	}
 
 
-	public void setRoles(Set<RolModel> roles) {
+	public void setRoles(List<GrantedAuthority> roles) {
 		this.roles = roles;
 	}
 }

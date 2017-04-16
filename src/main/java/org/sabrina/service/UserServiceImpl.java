@@ -5,6 +5,8 @@ import java.util.*;
 import org.sabrina.model.*;
 import org.sabrina.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,23 +17,20 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private RoleRepository roleRepository;
-	
-	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
-	public UserModel findUserByEmail(String email) {
-		return userRepository.findByEmail(email);
+	public UserModel findUserByUsername(String username) {
+		return userRepository.findByUsername(username);
 	}
 
 	@Override
 	public void saveUser(UserModel user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-		user.setStatus(1);
-		RolModel userRole = roleRepository.findByRole("ADMIN");
-		user.setRoles(new HashSet<RolModel>(Arrays.asList(userRole)));
-		userRepository.save(user);		
+		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority("ROLE_USER") };
+		user.setRoles(Arrays.asList(userRoles));
+		user.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+		userRepository.save(user);
+		
 	}
 
 }

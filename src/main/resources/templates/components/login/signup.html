@@ -33,15 +33,10 @@
 			  				<input type="text" th:field="*{email}" placeholder="Insert your email" class="form-control" />
 			  				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></p>
 				  		</div>
-				  		<div class="form-group">
-		  					<label> Name: </label>
-			  				<input type="text" th:field="*{name}" placeholder="Insert your name" class="form-control" />
-			  				<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="validation-message"></p>
-				  		</div>
 				  		<div class="form-group">		  				
-		  					<label> Last Name: </label>
-			  				<input type="text" th:field="*{lastName}" placeholder="Insert your las name" class="form-control" />		  			
-				  			<p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="validation-message"></p>
+		  					<label> User Name: </label>
+			  				<input type="text" th:field="*{username}" placeholder="Insert your username" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></p>
 				  		</div>
 				  		<div class="form-group">
 		  					<label> Password: </label>
@@ -53,7 +48,7 @@
 						</div>
 						<br/>
 						<div align="center">
-							<span class="successMessage" th:utext="${successMessage}">
+							<span class="successMessage" th:utext="${successMessage}">								  
 							</span>								
 						</div>						
 		  			</form>
@@ -61,4 +56,7 @@
 		  	</div>
 		  </div>
 	</body>
+	<footer class="footer-site">
+		<p> &copy; iRentMovies 2017 </p> 
+	</footer> 
 </html>
