@@ -1,6 +1,8 @@
 package org.david.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.validator.constraints.*;
 
 @Entity
@@ -21,7 +23,7 @@ public class MovieModel {
 	@NotEmpty(message="*Please provide the sinopsis of the movie.*")
 	private String description;
 	@Column(name="year")
-	@NotEmpty(message="*Please provide the release year of the movie.*")
+	@NotNull(message="*Please provide the release year of the movie.*")
 	private int year;
 	@Column(name="director")
 	@NotEmpty(message="*Please provide the director of the movie.*")
@@ -33,11 +35,16 @@ public class MovieModel {
 	@NotEmpty(message="*Please provide the URL of the cover image.*")
 	private String url_cover;
 	@Column(name="rating")
-	@NotEmpty(message="*Please provide the valoration of the movie.*")
-	private double rating;
+	@NotNull(message="*Please provide the valoration of the movie.*")
+	private int rating;
 	
 	//Empty constructor
 	public MovieModel(){}
+	
+
+	public MovieModel(String name) {
+		this.name = name;
+	}//Constructor titulo - Para pruebas
 
 	/* Getters and Setters */	
 	
@@ -105,12 +112,12 @@ public class MovieModel {
 		this.url_cover = url_cover;
 	}//setUrl_cover
 
-	public double getRating() {
+	public int getRating() {
 		return rating;
 	}//getRating
 
-	public void setRating(double rating) {
-		this.rating = rating;
+	public void setRating(int d) {
+		this.rating = d;
 	}//setRating
 	
 }//class
