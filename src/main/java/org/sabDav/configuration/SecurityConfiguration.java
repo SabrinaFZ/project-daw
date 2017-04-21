@@ -31,7 +31,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().antMatchers("/signup").permitAll();
-		http.authorizeRequests().antMatchers("/search").permitAll();
 		http.authorizeRequests().anyRequest().authenticated();
 		http.formLogin().loginPage("/login").usernameParameter("username")
 		.passwordParameter("password").defaultSuccessUrl("/home")
