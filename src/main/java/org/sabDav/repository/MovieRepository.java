@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends JpaRepository<MovieModel, Long>{
 
 	public MovieModel findById(int id);
-	public MovieModel findByName(String name);
+	public MovieModel findByTitle(String title);
 	//TODO Otros metodos de busqueda de peliculas: year, director, valoration, ...
 	
 }//movieRepository
