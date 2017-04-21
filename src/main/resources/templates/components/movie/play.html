@@ -5,13 +5,13 @@
 </head>
 <body>
 <p>TODO Play screen goes here... </p>
-<p> - Title: <span th:text="${movie.getName()}">'Title'</span></p>
+<p> - Title: <span th:text="${movie.getTitle()}">'Title'</span></p>
 <p> - URL: <span th:text="${url}">'URL'</span></p>
 
 <iframe  width="560" height="315" src="${url}">
   <p>Your browser does not support iframes.</p>
 </iframe>
 <p> </p>
-<a href="/search">Search another movie</a>
+<a th:href="@{/search}">Search another movie</a>
 </body>
 </html>

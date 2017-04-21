@@ -13,9 +13,9 @@ public class MovieModel {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="movie_id")
 	private int id;	
-	@Column(name="name")
+	@Column(name="title")
 	@NotEmpty(message="*Please provide the name of the movie.*")
-	private String name;
+	private String title;
 	@Column(name="url_movie")
 	@NotEmpty(message="*Please provide the URL of the movie.*")
 	private String url_movie;
@@ -42,8 +42,8 @@ public class MovieModel {
 	public MovieModel(){}
 	
 
-	public MovieModel(String name) {
-		this.name = name;
+	public MovieModel(String title) {
+		this.title = title;
 	}//Constructor titulo - Para pruebas
 
 	/* Getters and Setters */	
@@ -56,12 +56,12 @@ public class MovieModel {
 		this.id = id;
 	}//setId
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}//getName
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}//setName
 
 	public String getUrl_movie() {

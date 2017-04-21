@@ -5,11 +5,11 @@
 </head>
 <body>
 <p>TODO Results goes here... </p>
-<p> - Title: <span th:text="${movie.getName()}">'Title'</span></p>
+<p> - Title: <span th:text="${movie.getTitle()}">'Title'</span></p>
 <p> - URL: <span th:text="${movie.getUrl_movie()}">'URL'</span></p>
 <p> - Cover image: <span th:text="${movie.getUrl_cover()}">'Cover'</span></p>
 
 <a th:href="@{/play/{id}(id=${movie.getId()})}">Play movie</a>
-<a href="/search">Search again</a>
+<a th:href="@{/search}">Search again</a>
 </body>
 </html>

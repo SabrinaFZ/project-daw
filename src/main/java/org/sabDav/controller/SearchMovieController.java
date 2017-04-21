@@ -38,7 +38,7 @@ public class SearchMovieController {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		
-		MovieModel movie = movieService.findByName(form.getTitle());
+		MovieModel movie = movieService.findByTitle(form.getTitle());
 		if(movie == null){
 			result.rejectValue("title", "error.form", "* There is no movie with the title provided");
 		}

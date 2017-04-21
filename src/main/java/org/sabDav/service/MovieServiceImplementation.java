@@ -17,8 +17,8 @@ public class MovieServiceImplementation implements MovieService {
 	}//findById
 	
 	@Override
-	public MovieModel findByName(String name) {
-		return movieRepository.findByName(name);
+	public MovieModel findByTitle(String title) {
+		return movieRepository.findByTitle(title);
 	}//findByName
 
 	@Override
