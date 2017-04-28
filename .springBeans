@@ -7,6 +7,10 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
+<<<<<<< HEAD
+=======
+		<config>java:org.sabDav.IRentMoviesApplication</config>
+>>>>>>> d7c8d522c4dd4625ce80608ea47019713f9a4dc6
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

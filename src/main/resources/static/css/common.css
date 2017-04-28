@@ -4,10 +4,6 @@
 	text-shadow: 2px 2px #AFEEEE;
 }
 
-body{
-	padding-bottom:20px
-}
-
 /* Style for buttons */
 .btn.outline{
 	background: none;
@@ -19,7 +15,7 @@ body{
 	font-weight: bold;
 }
 
-/* Links  #59D6E3 */
+/* Links */
 a, a:active{
 	color: #48D1CC;
 }
