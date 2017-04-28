@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: iRentMovies
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: David
+Built-By: sabrina
 Implementation-Vendor-Id: org.irm
 Build-Jdk: 1.8.0_121
 Implementation-URL: http://projects.spring.io/spring-boot/iRentMovies-
