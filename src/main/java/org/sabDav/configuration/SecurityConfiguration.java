@@ -16,7 +16,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
-	public CustomAuthenticationProvider authenticationProvider ;
+	public CustomAuthenticationProvider authenticationProvider;
+	
+	@Autowired
+	public CustomSuccessHandler customSuccessHandler;
+	 
 	
 	
 	@Override
@@ -31,10 +35,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/login").permitAll();
 		http.authorizeRequests().antMatchers("/signup").permitAll();
+		http.authorizeRequests().antMatchers("/home").access("hasRole('USER') or hasRole('ADMIN')");
+		http.authorizeRequests().antMatchers("/admin/**").access("hasRole('ADMIN')");
 		http.authorizeRequests().anyRequest().authenticated();
 		http.formLogin().loginPage("/login").usernameParameter("username")
-		.passwordParameter("password").defaultSuccessUrl("/home")
-		.failureUrl("/login?error").permitAll();
+		.passwordParameter("password").successHandler(customSuccessHandler)
+		.failureUrl("/login?error").permitAll().and().csrf();
 		http.logout().logoutUrl("/logout").logoutSuccessUrl("/login?logout")
 		.permitAll();
 	}

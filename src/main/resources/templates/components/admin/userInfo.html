@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Sign Up</title>
+		<title>Admin - Users </title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="user-scalable = no"/>
@@ -18,10 +18,10 @@
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"> </script>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
-	</head>
-	
-	<body>
-		<div id="irm-admin">
+		</head>
+		
+		<body>			
+			<div id="irm-admin">
 			  <nav class="navbar navbar-default navbar-fixed-top">
 				  <div class="container">
 				   <div class="navbar-header">
@@ -48,41 +48,32 @@
 				    	</div>
 				   </div>
 			  </nav>		  			 
-		  <div class="container">
-		  		<div class="col-md-6 col-md-offset-3">
-		  			<form action="#" th:action="@{/admin/users/signup}" method="POST" th:object="${user}" class="form-horizontal">
-			  			<div class="form-group">	  				
-		  					<label> Email: </label>
-			  				<input type="text" th:field="*{email}" placeholder="Insert your email" class="form-control" />
-			  				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></p>
-				  		</div>
-				  		<div class="form-group">		  				
-		  					<label> User Name: </label>
-			  				<input type="text" th:field="*{username}" placeholder="Insert your username" class="form-control" />		  			
-				  			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></p>
-				  		</div>
-				  		<div class="form-group">
-		  					<label> Password: </label>
-			  				<input type="password" th:field="*{password}" placeholder="Insert your password" class="form-control" />
-				  			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></p>
-				  		</div>
-				  		<div align="center" class="signUpButton">
-							<button class="btn btn-primary btn-md outline" name="Submit" value="SignUp" type="Submit" th:text="Submit"></button>	
-						</div>
-						<br/>
-						<div align="center">
-							<span class="successMessage" th:utext="${successMessage}">								  
-							</span>								
-						</div>
-						<div align="center">
-							<p> <a th:href="@{/admin/users}" method="GET">Go back</a></p>
-						</div>				
-		  			</form>
-		  		</div>
-		  	</div>
-		  </div>
-	</body>
-	<footer class="footer-site">
-		<p> &copy; iRentMovies 2017 </p> 
-	</footer> 
+			  <div class="container">
+			  	<div class="btn-group pull-right" role="group">
+			  		<form th:object="${user}" th:action="@{/admin/users/{path}(path=${user.id})}" th:method="DELETE">
+				  		<button type="submit" class="btn btn-primary btn-md outline" >
+				  			 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove User
+				  		</button>
+			  		</form>	
+			  	</div>
+			  	<table class="table table-hover">
+			  		<caption> Users </caption>		  		
+		  			<thead>
+		  				<tr>
+			  				<th>#</th>
+					    	<th>Email</th>
+					    	<th>Username</th>
+				    	</tr>
+		  			</thead>
+					<tbody>
+						<tr th:object="${user}">
+					        <td><a th:text="${user.id}" th:href="@{/admin/users/{path}(path=${user.id})}"></a></td>
+					        <td th:text="${user.email}"></td>
+					        <td th:text="${user.username}"></td>
+	    				</tr>
+					</tbody>  		  		
+			  	</table>
+			  </div>
+			</div>
+		</body>
 </html>

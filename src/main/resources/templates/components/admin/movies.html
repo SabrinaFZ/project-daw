@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Login</title>
+		<title>Movies</title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="user-scalable = no"/>
@@ -20,40 +20,36 @@
 		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
 		</head>
 		
-		<body>
-		<div id="irm-login">
-		  <div class="jumbotron text-center">
-		    <h1 th:text="iRentMovies"></h1>
-		  </div>
-		  <div class="container">
-		  	<div class="col-md-6 col-md-offset-3">
-			  	<form th:action="@{/login}" method="POST" class="form-horizontal">
-			  		<h3 style="text-align:center;" th:text="Welcome"></h3>
-			  		<br/>
-			  		<div class="form-group">
-				  		<label> User Name: </label>
-				  		<input type="text" id="username" name="username"
-				  		th:placeholder="Username" class="form-control" />
-			  		</div>
-			  		<div class="form-group">
-				  		<label> Password: </label>
-				  		<input type="password" id="password" name="password"
-				  		th:placeholder="Password" class="form-control" />
-			  		</div>
-					<div align="center" class="loginButton">
-						<button class="btn btn-primary btn-md outline" name="Submit" value="Login" type="Submit" th:text="Login"></button>	
-					</div>				
-					<br/>
-			  		<div align="center" th:if="${param.error}">
-						<p class="validation-message">Email or Password invalid, please verify</p>
-					</div>
-			  	</form>
-			  		<p style="text-align: center;"> If you don't have an account, please inform to the admin</p>	  			
-		  	</div>
-		  </div>
-		  <footer class="footer-site">
-		  	<p> &copy; iRentMovies 2017 </p> 
-		  </footer> 
-		</div>
-	</body>
+		<body>			
+			<div id="irm-admin">
+			  <nav class="navbar navbar-default navbar-fixed-top">
+				  <div class="container">
+				   <div class="navbar-header">
+				   	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
+				       <span class="sr-only">Toggle navigation</span>
+				       <span class="icon-bar"></span>
+				       <span class="icon-bar"></span>
+				       <span class="icon-bar"></span>
+				      </button>
+				      <a class="navbar-brand" th:href="@{/admin}">
+				        iRentMovies
+				      </a>
+				  </div>
+				   <div class="collapse navbar-collapse" id="collapse-1">
+					      <ul class="nav navbar-nav">
+					        <li class="dropdown">
+					          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Application <span class="caret"></span></a>
+					          <ul class="dropdown-menu">
+					            <li><a th:href="@{/admin/users}">Users</a></li>
+					            <li class="active"><a th:href="@{/admin/movies}" >Movies <span class="sr-only">(current)</span></a></li>					 
+					          </ul>
+					        </li>
+					      </ul>				      
+				    </div>
+				 </div>
+			 </nav>
+			  <div class="container">
+			  </div>
+			</div>
+		</body>
 </html>

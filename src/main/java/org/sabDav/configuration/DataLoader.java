@@ -26,8 +26,10 @@ public class DataLoader {
 		// User #2: "root", with password "p2" and roles "USER" and "ADMIN"
 		GrantedAuthority[] adminRoles = { new SimpleGrantedAuthority( "ROLE_USER"),
 		new SimpleGrantedAuthority( "ROLE_ADMIN") };
+		GrantedAuthority[] userRoles = { new SimpleGrantedAuthority( "ROLE_USER")};
 		userRepository.save(new UserModel("admin", "admin", "admin@email.com", Arrays.asList(adminRoles)));
-	
+		userRepository.save(new UserModel("sabrina", "sabrina", "sabrina@email.com", Arrays.asList(userRoles)));
+		userRepository.save(new UserModel("david", "david", "david@email.com", Arrays.asList(userRoles)));
 			
 		/* TODO Lista inicial de peliculas */
 		/*
