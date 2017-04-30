@@ -1,1 +1,32 @@
 body { padding-top: 100px; }
+
+#myCarousel {
+	width: 80%; 
+	border: 2px solid #48D1CC;
+	margin: 0 auto;
+	border-radius: 2px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+img {
+    opacity: 0.8;
+}
+
+.jumbotron{
+	background-color: #48D1CC;	
+	color: white;
+	text-align:center;
+	
+}
+
+#step-1, #step-2, #step-3{
+	text-align:center;
+	border: 2px solid #48D1CC;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+#step-1 .glyphicon, #step-2 .glyphicon, #step-3 .glyphicon{
+	font-size: 50px;
+}

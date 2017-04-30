@@ -32,7 +32,6 @@ public class LoginController {
 	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
 	@RequestMapping(value="/home", method = RequestMethod.GET)
 	public ModelAndView home(){
-		System.out.println("paso2");
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("home");
 		return modelAndView;
