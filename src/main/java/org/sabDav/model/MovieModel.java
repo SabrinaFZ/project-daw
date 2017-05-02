@@ -27,8 +27,9 @@ public class MovieModel {
 	@Column(name="cast")
 	private String cast;	
 	@Column(name="url_cover")
-	private String url_cover;
+	private String url_cover;	
 	@Column(name="rating")
+	@Range(min=0,max=10, message="*Pick a number between 0 - 10.*")
 	private int rating;
 	
 	//Empty constructor

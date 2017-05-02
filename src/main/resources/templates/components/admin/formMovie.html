@@ -79,7 +79,32 @@
 				  		<div class="form-group">		  				
 		  					<label> Url of the movie: </label>
 			  				<input type="text" th:field="*{url_movie}" placeholder="Insert an url" class="form-control" />		  			
-				  			<p th:if="${#fields.hasErrors('url_movie')}" th:errors="*{url}" class="validation-message"></p>
+				  			<p th:if="${#fields.hasErrors('url_movie')}" th:errors="*{url_movie}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Description: </label>
+			  				<input type="text" th:field="*{description}" placeholder="Insert a description" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Year: </label>
+			  				<input type="text" th:field="*{year}" placeholder="i.e 2016" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Director: </label>
+			  				<input type="text" th:field="*{director}" placeholder="Insert a year" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('director')}" th:errors="*{director}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Poster: </label>
+			  				<input type="text" th:field="*{url_cover}" placeholder="Insert a cover url" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('url_cover')}" th:errors="*{url_cover}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Rating: </label>
+			  				<input type="text" th:field="*{rating}" placeholder="Insert a rating (0-10)" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="validation-message"></p>
 				  		</div>
 				  		<div align="center" class="createMovieButton">
 							<button class="btn btn-primary btn-md outline" name="Submit" value="createMovieButton" type="Submit" th:text="Submit"></button>	

@@ -124,6 +124,7 @@ public class AdminController {
 		if(movieExists != null){
 			result.rejectValue("title", "error.movie", "* There is already a movie in the database with the title provided");
 		}
+		
 		if(result.hasErrors()){
 			modelAndView.setViewName("/components/admin/formMovie");
 		}else{
