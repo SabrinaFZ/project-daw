@@ -20,6 +20,12 @@ public class MovieServiceImplementation implements MovieService {
 	public MovieModel findByTitle(String title) {
 		return movieRepository.findByTitle(title);
 	}//findByName
+	
+	
+	@Override
+	public MovieRepository getMovieRepository() {
+		return movieRepository;
+	}
 
 	@Override
 	public void saveMovie(MovieModel movie) {

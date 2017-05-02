@@ -1,16 +1,18 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Admin - Users </title>
+		<title>Admin - Movies </title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="user-scalable = no"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 	    
 	    <script src="http://code.jquery.com/jquery.js"></script>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   
+	
+	    
 	    <!-- Latest compiled and minified CSS-->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />		
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
@@ -21,14 +23,13 @@
 	    <!-- Latest compiled and minified JavaScript-->
 	    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"> </script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-		
 		<link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
 		</head>
 		
 		<body>			
 			<div id="irm-admin">
-			  <nav class="navbar navbar-default navbar-fixed-top">
+			   <nav class="navbar navbar-default navbar-fixed-top">
 				  <div class="container">
 				   <div class="navbar-header">
 				   	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
@@ -68,30 +69,31 @@
 				   </div>
 			  </nav>		  			  
 			  <div class="container">
-			  	<div class="pull-right" id="add">
-			  		<form th:action="@{/admin/users/signup}" method="GET">
-				  		<button type="submit" class="btn btn-primary btn-md outline" >
-				  			 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add User
-				  		</button>
-			  		</form>	
-			  	</div>	
-			  	<table class="table table-hover">
-			  		<caption> Users </caption>	  		
-		  			<thead>
-		  				<tr>
-			  				<th>#</th>
-					    	<th>Email</th>
-					    	<th>Username</th>
-				    	</tr>
-		  			</thead>
-					<tbody>
-						<tr th:each="user : ${users}">
-					        <td><a th:text="${user.id}" th:href="@{/admin/users/{path}(path=${user.id})}"></a></td>
-					        <td th:text="${user.email}"></td>
-					        <td th:text="${user.username}"></td>
-	    				</tr>
-					</tbody>  		  		
-			  	</table>
+			  	<div class="col-md-6 col-md-offset-3">
+		  			<form action="#" th:action="@{/admin/movies/formMovie}" method="POST" th:object="${movie}" class="form-horizontal">
+			  			<div class="form-group">	  				
+		  					<label> Title of the movie: </label>
+			  				<input type="text" th:field="*{title}" placeholder="Insert a title" class="form-control" />
+			  				<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Url of the movie: </label>
+			  				<input type="text" th:field="*{url_movie}" placeholder="Insert an url" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('url_movie')}" th:errors="*{url}" class="validation-message"></p>
+				  		</div>
+				  		<div align="center" class="createMovieButton">
+							<button class="btn btn-primary btn-md outline" name="Submit" value="createMovieButton" type="Submit" th:text="Submit"></button>	
+						</div>
+						<br/>
+						<div align="center">
+							<span class="successMessage" th:utext="${successMessage}">								  
+							</span>								
+						</div>
+						<div align="center">
+							<p> <a th:href="@{/admin/movies}">Go back</a></p>
+						</div>				
+		  			</form>
+		  		</div>		  	
 			  </div>
 			</div>
 		</body>

@@ -1,7 +1,6 @@
 package org.sabDav.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.*;
 
@@ -20,22 +19,16 @@ public class MovieModel {
 	@NotEmpty(message="*Please provide the URL of the movie.*")
 	private String url_movie;
 	@Column(name="description")
-	@NotEmpty(message="*Please provide the sinopsis of the movie.*")
 	private String description;
 	@Column(name="year")
-	@NotNull(message="*Please provide the release year of the movie.*")
 	private int year;
 	@Column(name="director")
-	@NotEmpty(message="*Please provide the director of the movie.*")
 	private String director;
 	@Column(name="cast")
-	@NotEmpty(message="*Please provide the cast actors of the movie.*")
 	private String cast;	
 	@Column(name="url_cover")
-	@NotEmpty(message="*Please provide the URL of the cover image.*")
 	private String url_cover;
 	@Column(name="rating")
-	@NotNull(message="*Please provide the valoration of the movie.*")
 	private int rating;
 	
 	//Empty constructor
