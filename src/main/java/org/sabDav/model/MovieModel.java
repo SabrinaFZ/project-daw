@@ -1,5 +1,8 @@
 package org.sabDav.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 import org.hibernate.validator.constraints.*;
@@ -25,7 +28,8 @@ public class MovieModel {
 	@Column(name="director")
 	private String director;
 	@Column(name="cast")
-	private String cast;	
+	@ElementCollection
+	private List<String> cast = new ArrayList<String>();	
 	@Column(name="url_cover")
 	private String url_cover;	
 	@Column(name="rating")
@@ -90,11 +94,11 @@ public class MovieModel {
 		this.director = director;
 	}//setDirector
 
-	public String getCast() {
+	public List<String> getCast() {
 		return cast;
 	}//getCast
 
-	public void setCast(String cast) {
+	public void setCast(List<String> cast) {
 		this.cast = cast;
 	}//setCast
 

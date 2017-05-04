@@ -12,6 +12,7 @@
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   
 	    <script th:src="@{/js/components/admin/movies.js}"></script>
+
 	    
 	    <!-- Latest compiled and minified CSS-->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />		
@@ -70,27 +71,91 @@
 			  </nav>		  			  
 			  <div class="container">
 			  	<div class="btn-group pull-right" role="group">
-			  		<form th:object="${movie}" th:action="@{/admin/movies/{path}(path=${movie.id})}" th:method="DELETE">
+			  		<form th:object="${movie}" th:action="@{/admin/movies/{path}(path=${movie.id})}" th:method="PUT">
 				  		<button type="submit" class="btn btn-primary btn-md outline" >
 				  			 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove Movie
 				  		</button>
 			  		</form>	
 			  	</div>
+			  	<div class="btn-group pull-left" role="group">
+			  		<form th:object="${movie}" th:action="@{/admin/movies/{path}(path=${movie.id})}" th:method="DELETE">
+				  		<button type="submit" class="btn btn-primary btn-md outline" >
+				  			 <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit Movie
+				  		</button>
+			  		</form>	
+			  	</div>
 			  	<div class="movieInfo" th:object="${movie}">
-			  		<label>Title: </label>
-			  		<p id ="title" th:text="${movie.title}"></p>
-			  		<img id="poster" src="" alt="${movie.title} Poster"/>
-					<iframe width="854" height="480" th:src="@{${movie.url_movie}}"></iframe>
-			  		<label> Description: </label>
-			  		<p id="description"></p>
-			  		<label> Year: </label>
-			  		<p id="year"></p>
-			  		<label> Director: </label>
-			  		<p id="director"></p>
-			  		<label> Cast: </label>
-			  		<p id="cast"></p>
-			  		<label> Rating: </label>
-			  		<p id="rating"></p>
+			  		<div class="col-sm-8 col-sm-offset-2">
+			  			<label>Title: </label>
+			  			<p id ="title" th:text="${movie.title}"></p>
+			  			<label>Movie: </label>
+			  			<div class="embed-responsive embed-responsive-16by9" id="video">
+			  				<iframe class="embed-responsive-item" th:src="@{${movie.url_movie}}"></iframe>
+			  			</div>
+			  			<label style="width:30%">Poster: </label>
+			  			<label>Details: </label>
+			  			<br />
+		  				<img class="rounded" style="width:25%;height:auto; margin-right:5%" id="poster" th:src="@{${movie.url_cover}}" alt="${movie.title} Poster"/>
+			  			<div class="pull-right" style="width:70%;">		  			
+			  			<div class="panel-group" id="accordion">
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h1 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+						        <label> Description </label></a>
+						      </h1>
+						    </div>
+						    <div id="collapse1" class="panel-collapse collapse">
+						      <div class="panel-body"><p id="description" th:text="${movie.description}"></p></div>
+						    </div>
+						  </div>
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h1 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
+						        <label> Year </label></a>
+						      </h1>
+						    </div>
+						    <div id="collapse2" class="panel-collapse collapse">
+						      <div class="panel-body"><p id="year" th:text="${movie.year}"></p></div>
+						    </div>
+						  </div>
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h1 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">
+						        <label> Director </label></a>
+						      </h1>
+						    </div>
+						    <div id="collapse3" class="panel-collapse collapse">
+						      <div class="panel-body"><p id="director" th:text="${movie.director}"></p></div>
+						    </div>
+						  </div>
+						   <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h1 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">
+						        <label> Cast </label></a>
+						      </h1>
+						    </div>
+						    <div id="collapse4" class="panel-collapse collapse">
+						      <div class="panel-body"><p id="cast" th:text="${movie.cast}"></p></div>
+						    </div>
+						  </div>
+						  <div class="panel panel-default">
+						    <div class="panel-heading">
+						      <h1 class="panel-title">
+						        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">
+						        <label> Rating </label></a>
+						      </h1>
+						    </div>
+						    <div id="collapse5" class="panel-collapse collapse">
+						      <div class="panel-body"><p id="rating" th:text="${movie.rating}"></p></div>
+						    </div>
+						  </div>					  
+						 </div>				  			 
+			  			</div>	  					 			  											  		
+			  		</div>
 			  	</div>
 			  </div>
 			</div>

@@ -82,12 +82,22 @@
 		  				<tr>
 			  				<th>#</th>
 					    	<th>Title</th>
+					    	<th>Description</th>
+					    	<th>Year</th>
+					    	<th>Director</th>
+					    	<th>Cast</th>
+					    	<th>Rating</th>
 				    	</tr>
 		  			</thead>
 					<tbody>
 						<tr th:each="movie : ${movies}">
-					        <td><a th:text="${movie.id}" th:href="@{/admin/movies/{path}(path=${movie.id})}"></a></td>
-					        <td th:text="${movie.title}"></td>
+					        <td class="col-sm-1"><a th:text="${movie.id}" th:href="@{/admin/movies/{path}(path=${movie.id})}"></a></td>
+					        <td class="col-sm-2" th:text="${movie.title}"></td>
+					        <td class="col-sm-2" th:text="${movie.description}"></td>
+					        <td class="col-sm-2" th:text="${movie.year}"></td>
+					        <td class="col-sm-2" th:text="${movie.director}"></td>
+					        <td class="col-sm-2" th:text="${movie.cast}"></td>
+					        <td class="col-sm-1" th:text="${movie.rating}"></td>
 	    				</tr>
 					</tbody>  		  		
 			  	</table>

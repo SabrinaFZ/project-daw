@@ -15,3 +15,33 @@ caption {
 .movieInfo{
 	margin-top:50px;
 }
+
+#add_cast_member{
+	margin-bottom:5px;
+}
+
+#default {
+	margin-bottom:16px;
+}
+
+#video{
+	margin-bottom:10px !important;
+}
+
+
+.panel-default > .panel-heading {
+	background-color: #48D1CC;
+    color: white;
+    background-image: none;
+  	background-repeat: no-repeat;
+}
+
+.panel-heading.collapsed{
+	background-color: #48D1CC;
+	background-image: none;
+  	background-repeat: no-repeat;	
+}
+
+.panel-default a, .panel-default a:visited, .panel-default a:focus, .panel-default a:active, .panel-default a:hover {
+    color: white;
+}

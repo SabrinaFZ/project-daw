@@ -11,7 +11,7 @@
 	    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   
-	
+	    <script th:src="@{/js/components/admin/formMovie.js}"></script>
 	    
 	    <!-- Latest compiled and minified CSS-->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />		
@@ -93,8 +93,15 @@
 				  		</div>
 				  		<div class="form-group">		  				
 		  					<label> Director: </label>
-			  				<input type="text" th:field="*{director}" placeholder="Insert a year" class="form-control" />		  			
+			  				<input type="text" th:field="*{director}" placeholder="Insert a director name" class="form-control" />		  			
 				  			<p th:if="${#fields.hasErrors('director')}" th:errors="*{director}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group" id="cast">		  						  					
+		  					<label> Cast: </label>
+		  					<br />
+		  					<button class="btn btn-sm btn-primary btn-md outline" type="button" id="add_cast_member"><span class="glyphicon glyphicon-plus"> Add Cast Member</span></button>
+						    <input type="text" th:field="*{cast}" name = "cast[0]" placeholder="Insert a cast member" id="default" class="form-control" />		  			
+			  				<p th:if="${#fields.hasErrors('cast')}" th:errors="*{cast}" class="validation-message"></p>
 				  		</div>
 				  		<div class="form-group">		  				
 		  					<label> Poster: </label>
