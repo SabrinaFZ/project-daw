@@ -16,12 +16,14 @@ $(function() {
 				$('#description').empty();
 				$('#description').append(data.results[0].overview);
 			}
-			if($('#poster').attr('src','')){
+			
+			$("#poster").on("error", function(){
+				console.log(1);
 				$('#poster').empty();
 				$("#poster").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path).on("error", function(){
 					$("#poster").attr('src',"")
-				})
-			}
+				});
+			});
 			
 			if($('#year').text() == "0"){
 				$('#year').empty();
