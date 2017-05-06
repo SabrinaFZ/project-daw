@@ -95,7 +95,10 @@
 			  			<label style="width:30%">Poster: </label>
 			  			<label>Details: </label>
 			  			<br />
-		  				<img class="rounded" style="width:25%;height:auto; margin-right:5%" id="poster" th:src="@{${movie.url_cover}}" alt="${movie.title} Poster"/>
+			  			<div id="poster" class="pull-left" style="width:25%; margin-right:5%">
+			  				<input type="hidden" id="posterUrl" name="posterUrl" th:value="${movie.url_cover}"/>
+			  			</div>			  			
+		  				<!-- <img class="rounded" style="width:25%;height:auto; margin-right:5%" id="poster" th:src="${(!#strings.isEmpty(movie.url_cover)) ? movie.url_cover : ''}" alt="${movie.title}"/> -->
 			  			<div class="pull-right" style="width:70%;">		  			
 			  			<div class="panel-group" id="accordion">
 						  <div class="panel panel-default">

@@ -2,12 +2,15 @@
 var apiKey = "e53ed30d9e273053803f465b52b55158";
 var baseUrl = "https://api.themoviedb.org/3/search/movie?api_key="+apiKey+"&query=";
 
+function handleError() {
+	$(this).attr('th:src', '');
+}
 
 //Get the movie data
 $(function() {
 	
 	var movie = $('#title').text().replace(/ /g,"+");
-	
+		
 	$.ajax({
 		url : baseUrl+movie
 		}).then(function(data) {
@@ -16,14 +19,20 @@ $(function() {
 				$('#description').empty();
 				$('#description').append(data.results[0].overview);
 			}
+			var modelAttr = $("#posterUrl").val();
+			console.log(modelAttr)
 			
-			$("#poster").on("error", function(){
-				console.log(1);
+			if(modelAttr == ""){
+				console.log(1)
+				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'
 				$('#poster').empty();
-				$("#poster").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path).on("error", function(){
-					$("#poster").attr('src',"")
-				});
-			});
+				$('#poster').append(img)
+				$("#poster img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);	
+			}
+//				console.log(2);
+//				$("#poster").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
+//				$("#poster").on("error", handleError)
+			
 			
 			if($('#year').text() == "0"){
 				$('#year').empty();
