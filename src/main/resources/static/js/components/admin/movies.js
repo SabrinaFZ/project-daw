@@ -28,6 +28,22 @@ $(function() {
 				$('#poster').empty();
 				$('#poster').append(img)
 				$("#poster img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);	
+			}else{				
+				 $.ajax(modelAttr, {
+				      success: function(data) {
+				    	  console.log(2)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
+				    	  $('#poster').empty();
+						  $('#poster').append(img)
+						  $("#poster img").attr('src',modelAttr);
+				      },
+				      error: function() {
+				    	  console.log(3)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
+				    	  $('#poster').empty();
+						  $('#poster').append(img);
+				      }
+				   });
 			}
 //				console.log(2);
 //				$("#poster").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
