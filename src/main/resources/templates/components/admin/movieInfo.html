@@ -142,7 +142,10 @@
 						      </h1>
 						    </div>
 						    <div id="collapse4" class="panel-collapse collapse">
-						      <div class="panel-body"><p id="cast" th:text="${movie.cast}"></p></div>
+						      <div class="panel-body" id="cast">
+						      	<input type="hidden" id="castMember" name="castMember" th:value="${movie.cast}"/>
+						      	<!-- <p id="cast" th:text="${movie.cast}"></p> -->
+						      </div>
 						    </div>
 						  </div>
 						  <div class="panel panel-default">

@@ -2,10 +2,6 @@
 var apiKey = "e53ed30d9e273053803f465b52b55158";
 var baseUrl = "https://api.themoviedb.org/3/search/movie?api_key="+apiKey+"&query=";
 
-function handleError() {
-	$(this).attr('th:src', '');
-}
-
 //Get the movie data
 $(function() {
 	
@@ -15,15 +11,18 @@ $(function() {
 		url : baseUrl+movie
 		}).then(function(data) {
 			movieInfo = data
+			
+			//Get the description
 			if($('#description').text() == ""){
 				$('#description').empty();
 				$('#description').append(data.results[0].overview);
 			}
+			
+			//Get the poster
 			var modelAttr = $("#posterUrl").val();
 			console.log(modelAttr)
 			
 			if(modelAttr == ""){
-				console.log(1)
 				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'
 				$('#poster').empty();
 				$('#poster').append(img)
@@ -31,29 +30,26 @@ $(function() {
 			}else{				
 				 $.ajax(modelAttr, {
 				      success: function(data) {
-				    	  console.log(2)
 				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
 				    	  $('#poster').empty();
 						  $('#poster').append(img)
 						  $("#poster img").attr('src',modelAttr);
 				      },
 				      error: function() {
-				    	  console.log(3)
 				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
 				    	  $('#poster').empty();
 						  $('#poster').append(img);
 				      }
 				   });
 			}
-//				console.log(2);
-//				$("#poster").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
-//				$("#poster").on("error", handleError)
 			
-			
+			//Get the year
 			if($('#year').text() == "0"){
 				$('#year').empty();
 				$('#year').append(new Date(data.results[0].release_date).getFullYear());
 			}
+			
+			//Get the rating
 			if($('#rating').text() == "0"){
 				$('#rating').empty();
 				$('#rating').append(data.results[0].vote_average);
@@ -61,6 +57,7 @@ $(function() {
 			getDetails(movieInfo, apiKey);
 	})
 	
+	//Get the director and cast
 	function getDetails(arg, key){
 		$.ajax({
 			url : "https://api.themoviedb.org/3/movie/"+arg.results[0].id+"/credits?api_key="+key		
@@ -72,14 +69,19 @@ $(function() {
 						   }
 						});
 				}
-				if($('#cast').text() == "[]"){
+				if($('#castMember').val() == "[]"){
 					$('#cast').empty();
 					data.cast.forEach( function (cast_member){						
-						$('#cast').append(cast_member.name+"<br/>");
+						$('#cast').append('<p>'+cast_member.name+'</p>');
 					});
+				}else{
+					var cast = $('#castMember').val();
+					cast = cast.replace(/[\[\]]+/g,'') //Replace brackets to ''
+					var array = cast.split(","); //split the cast members
+					array.forEach(function(castMember){
+						$('#cast').append('<p>'+castMember+'</p>')
+					})
 				}
-				
-				//devuelvo el string pero sin corchetes
 		});
 	}
 	
