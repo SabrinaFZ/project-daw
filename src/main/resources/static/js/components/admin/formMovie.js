@@ -4,7 +4,7 @@ $(function() {
 		e.preventDefault();
 		cont++;
 		var aux = cont.toString();
-		var input = '<div class="input-group" id="cast"><input type="text" th:field="*{cast}" name = "cast['+aux+']" placeholder="Insert a cast member" class="form-control" /> <a href="#" class="delete  pull-right">Delete</a>'
+		var input = '<div class="input-group" id="cast"><input type="text" th:field="*{cast}" name = "cast['+aux+']" placeholder="Insert a cast member" class="form-control" /> <a href="#" class="delete  pull-right">Delete</a></div>'
 		var error = '<p th:if="${#fields.hasErrors("cast")}" th:errors="*{cast}" class="validation-message"></p>'
 		$('#cast').append(input+error);
 	});

@@ -99,7 +99,10 @@
 			  				<br />
 				  			<div id="posterMovie">
 				  				<div id="poster" class="pull-left" style="width:25%; margin-right:5%">
+				  					<div id="image">
+				  					</div>
 				  					<input type="hidden" id="posterUrl" name="posterUrl" th:value="${movie.url_cover}"/>
+				  					<input class="form-control" th:field="*{url_cover}" type="text" id ="posterName" value=""></input> 					
 				  				</div>			  			
 			  					<!-- <img class="rounded" style="width:25%;height:auto; margin-right:5%" id="poster" th:src="${(!#strings.isEmpty(movie.url_cover)) ? movie.url_cover : ''}" alt="${movie.title}"/> -->
 				  			</div>		  				  						  			
@@ -149,6 +152,7 @@
 							    </div>
 							    <div id="collapse4" class="panel-collapse collapse">
 							      <div class="panel-body" id="cast">
+							      	<button class="btn btn-sm btn-primary btn-md outline" type="button" id="add_cast_member"><span class="glyphicon glyphicon-plus"> Add Cast Member</span></button>
 							      	<input type="hidden" id="castMember" name="castMember" th:value="${movie.cast}"/>
 							      	<!-- <p id="cast" th:text="${movie.cast}"></p> -->
 							      </div>

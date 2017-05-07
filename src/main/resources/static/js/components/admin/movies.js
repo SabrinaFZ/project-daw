@@ -6,12 +6,25 @@ var baseUrl = "https://api.themoviedb.org/3/search/movie?api_key="+apiKey+"&quer
 $(function() {
 	
 	var movie = $('#titleName').val().replace(/ /g,"+");
+	var pos = 0;
 	
-	$('#edit').on("click", function(){
-		$('#title').attr('contenteditable', "true")
-		
-	})
-		
+
+	$('#add_cast_member').on("click", function (e) {
+		e.preventDefault();
+		console.log(1);
+		console.log(pos);
+		pos++;
+		var aux = pos.toString();
+		var input = '<div class="input-group" id="castMember"><input type="text" th:field="*{cast}" name = "cast['+aux+']" placeholder="Insert a cast member" class="form-control" /> <a href="#" class="delete  pull-right">Delete</a></div>'
+		$('#cast').append(input);
+	});
+	
+	$('#cast').on("click",".delete", function(e){
+		console.log(2);
+        e.preventDefault(); $(this).parent('div').remove();
+        pos--;
+    })
+	
 	$.ajax({
 		url : baseUrl+movie
 		}).then(function(data) {
@@ -28,25 +41,25 @@ $(function() {
 			console.log(modelAttr)
 			
 			if(modelAttr == ""){
-				var img = '<img class="rounded" style="width:100%;height:auto;" th:field="*{url_cover}" src="" alt="${movie.title}" />'
-				var url = '<input class="form-control" type="text" id ="titleName" value="https://image.tmdb.org/t/p/w500/'+data.results[0].poster_path+'"></input>'
-				$('#poster').empty();
-				$('#poster').append(img+url)
-				$("#poster img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);	
+				console.log(4)
+				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'				
+				$('#image').append(img)
+				$("#image img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
+				$("#posterName").attr('value', "https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path)
 			}else{				
 				 $.ajax(modelAttr, {
 				      success: function(data) {
-				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  th:field="*{url_cover}" src="" th:alt="${movie.title}" />'
-				    	  var url = '<input class="form-control" type="text" id ="titleName" th:value='+modelAtr+'></input>'
-				    	  $('#poster').empty();
-						  $('#poster').append(img+url)
-						  $("#poster img").attr('src',modelAttr);
+				    	  console.log(5)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;" src="" th:alt="${movie.title}" />'
+						  $('#image').append(img)
+						  $("#image img").attr('src',modelAttr);
+				    	  $("#posterName").attr('value', modelAttr)
 				      },
 				      error: function() {
-				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  th:field="*{url_cover}" src="" th:alt="${movie.title}" />'
-				    	  var url="";
-				    	  $('#poster').empty();
-						  $('#poster').append(img+url);
+				    	  console.log(6)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;" th:field="*{url_cover}" src="" th:alt="${movie.title}" />'
+						  $('#image').append(img);
+				    	  $("#posterName").attr('value', modelAttr)
 				      }
 				   });
 			}
@@ -77,22 +90,31 @@ $(function() {
 						   }
 						});
 				}
+								
+				
 				if($('#castMember').val() == "[]"){
-					$('#cast').empty();
-					var cont=0;
+					var cont=0;	
+					console.log(3);
 					data.cast.forEach( function (cast_member){
-						$('#cast').append('<input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+cast_member.name+'"></input>');
+						$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+cast_member.name+'"></input><a href="#" class="delete  pull-right">Delete</a></div>');
 						cont++;
-					});
+					});					
+					pos = cont;
 				}else{
 					var cast = $('#castMember').val();
 					cast = cast.replace(/[\[\]]+/g,'') //Replace brackets to ''
-					var array = cast.split(","); //split the cast members
+					var array = cast.split(", "); //split the cast members
 					var cont=0;
+					console.log(array)
 					array.forEach(function(castMember){
-						$('#cast').append('<input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+castMember+'"></input>')
-						cont++;
+						console.log(castMember)
+						if(castMember != "null"){
+							$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+castMember+'"></input><a href="#" class="delete  pull-right">Delete</a></div>')
+							cont++;
+						}
+						
 					})
+					pos = cont;
 				}
 		});
 	}

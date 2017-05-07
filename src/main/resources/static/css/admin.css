@@ -42,6 +42,16 @@ caption {
   	background-repeat: no-repeat;	
 }
 
-.panel-default a, .panel-default a:visited, .panel-default a:focus, .panel-default a:active, .panel-default a:hover {
+.panel-heading a, .panel-heading a:visited, .panel-heading a:focus, .panel-heading a:active, .panel-heading a:hover {
     color: white;
+}
+
+.panel-default .delete a, .panel-default .delete a:active{
+	color: #48D1CC;
+}
+
+.panel-body a:hover, .panel-body a:focus{
+	color:#48D1CC;
+	text-decoration:none;
+	font-weight:bold;
 }
