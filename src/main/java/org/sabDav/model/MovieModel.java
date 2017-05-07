@@ -21,7 +21,7 @@ public class MovieModel {
 	@Column(name="url_movie")
 	@NotEmpty(message="*Please provide the URL of the movie.*")
 	private String url_movie;
-	@Column(name="description")
+	@Column(name="description", length=2000)
 	private String description;
 	@Column(name="year")
 	private int year;
