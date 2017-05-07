@@ -1,7 +1,9 @@
 package org.sabDav.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.*;
 
@@ -20,22 +22,18 @@ public class MovieModel {
 	@NotEmpty(message="*Please provide the URL of the movie.*")
 	private String url_movie;
 	@Column(name="description")
-	@NotEmpty(message="*Please provide the sinopsis of the movie.*")
 	private String description;
 	@Column(name="year")
-	@NotNull(message="*Please provide the release year of the movie.*")
 	private int year;
 	@Column(name="director")
-	@NotEmpty(message="*Please provide the director of the movie.*")
 	private String director;
 	@Column(name="cast")
-	@NotEmpty(message="*Please provide the cast actors of the movie.*")
-	private String cast;	
+	@ElementCollection
+	private List<String> cast = new ArrayList<String>();	
 	@Column(name="url_cover")
-	@NotEmpty(message="*Please provide the URL of the cover image.*")
-	private String url_cover;
+	private String url_cover;	
 	@Column(name="rating")
-	@NotNull(message="*Please provide the valoration of the movie.*")
+	@Range(min=0,max=10, message="*Pick a number between 0 - 10.*")
 	private int rating;
 	
 	//Empty constructor
@@ -96,11 +94,11 @@ public class MovieModel {
 		this.director = director;
 	}//setDirector
 
-	public String getCast() {
+	public List<String> getCast() {
 		return cast;
 	}//getCast
 
-	public void setCast(String cast) {
+	public void setCast(List<String> cast) {
 		this.cast = cast;
 	}//setCast
 
