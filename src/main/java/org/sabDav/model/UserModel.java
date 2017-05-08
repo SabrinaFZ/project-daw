@@ -17,13 +17,14 @@ public class UserModel {
 	@Column(name="user_id")
 	private int id;	
 	@Column(name="email")
-	@Email(message = "*Your email must be i.e: example@email.com*")
+	@Email(message = "*The email must be i.e: example@email.com*")
 	@NotEmpty(message = "*Please provide an email*")
 	private String email;	
-	@Length(min=5, message="*Your password must have at least 5 characters*")
-	@NotEmpty(message="*Please provide your password*")
+	@Length(min=5, message="*The password must have at least 5 characters*")
+	@NotEmpty(message="*Please provide a password*")
 	private String password;
 	@Column(name="username")
+	@NotEmpty(message="*Please provide an username*")
 	private String username;
 	
 	@ElementCollection (fetch = FetchType.EAGER)
