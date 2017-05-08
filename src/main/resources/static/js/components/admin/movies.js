@@ -5,17 +5,35 @@ var baseUrl = "https://api.themoviedb.org/3/search/movie?api_key="+apiKey+"&quer
 //Get the movie data
 $(function() {
 	
-	var movie = $('#title').text().replace(/ /g,"+");
-		
+	var movie = $('#titleName').val().replace(/ /g,"+");
+	var pos = 0;
+	
+
+	$('#add_cast_member').on("click", function (e) {
+		e.preventDefault();
+		console.log(1);
+		console.log(pos);
+		pos++;
+		var aux = pos.toString();
+		var input = '<div class="input-group" id="castMember"><input type="text" th:field="*{cast}" name = "cast['+aux+']" placeholder="Insert a cast member" class="form-control" /> <a href="#" class="delete  pull-right">Delete</a></div>'
+		$('#cast').append(input);
+	});
+	
+	$('#cast').on("click",".delete", function(e){
+		console.log(2);
+        e.preventDefault(); $(this).parent('div').remove();
+        pos--;
+    })
+	
 	$.ajax({
 		url : baseUrl+movie
 		}).then(function(data) {
 			movieInfo = data
 			
 			//Get the description
-			if($('#description').text() == ""){
+			if($('#description').val() == ""){
 				$('#description').empty();
-				$('#description').append(data.results[0].overview);
+				$('#description').append(data.results[0].overview)
 			}
 			
 			//Get the poster
@@ -23,30 +41,33 @@ $(function() {
 			console.log(modelAttr)
 			
 			if(modelAttr == ""){
-				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'
-				$('#poster').empty();
-				$('#poster').append(img)
-				$("#poster img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);	
+				console.log(4)
+				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'				
+				$('#image').append(img)
+				$("#image img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
+				$("#posterName").attr('value', "https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path)
 			}else{				
 				 $.ajax(modelAttr, {
 				      success: function(data) {
-				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
-				    	  $('#poster').empty();
-						  $('#poster').append(img)
-						  $("#poster img").attr('src',modelAttr);
+				    	  console.log(5)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;" src="" th:alt="${movie.title}" />'
+						  $('#image').append(img)
+						  $("#image img").attr('src',modelAttr);
+				    	  $("#posterName").attr('value', modelAttr)
 				      },
 				      error: function() {
-				    	  var img = '<img class="rounded" style="width:100%;height:auto;"  src="" th:alt="${movie.title}" />'
-				    	  $('#poster').empty();
-						  $('#poster').append(img);
+				    	  console.log(6)
+				    	  var img = '<img class="rounded" style="width:100%;height:auto;" th:field="*{url_cover}" src="" th:alt="${movie.title}" />'
+						  $('#image').append(img);
+				    	  $("#posterName").attr('value', modelAttr)
 				      }
 				   });
 			}
 			
 			//Get the year
-			if($('#year').text() == "0"){
+			if($('#year').val() == "0"){
 				$('#year').empty();
-				$('#year').append(new Date(data.results[0].release_date).getFullYear());
+				$('#year').attr('value',new Date(data.results[0].release_date).getFullYear());
 			}
 			
 			//Get the rating
@@ -62,25 +83,38 @@ $(function() {
 		$.ajax({
 			url : "https://api.themoviedb.org/3/movie/"+arg.results[0].id+"/credits?api_key="+key		
 			}).then(function(data) {
-				if($('#director').text() == ""){
+				if($('#director').val() == ""){
 					data.crew.forEach( function (crew_member){
 						   if(crew_member.job == "Director"){
-							   $('#director').append(crew_member.name);
+							   $('#director').attr('value',crew_member.name);
 						   }
 						});
 				}
+								
+				
 				if($('#castMember').val() == "[]"){
-					$('#cast').empty();
-					data.cast.forEach( function (cast_member){						
-						$('#cast').append('<p>'+cast_member.name+'</p>');
-					});
+					var cont=0;	
+					console.log(3);
+					data.cast.forEach( function (cast_member){
+						$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+cast_member.name+'"></input><a href="#" class="delete  pull-right">Delete</a></div>');
+						cont++;
+					});					
+					pos = cont;
 				}else{
 					var cast = $('#castMember').val();
 					cast = cast.replace(/[\[\]]+/g,'') //Replace brackets to ''
-					var array = cast.split(","); //split the cast members
+					var array = cast.split(", "); //split the cast members
+					var cont=0;
+					console.log(array)
 					array.forEach(function(castMember){
-						$('#cast').append('<p>'+castMember+'</p>')
+						console.log(castMember)
+						if(castMember != "null"){
+							$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+castMember+'"></input><a href="#" class="delete  pull-right">Delete</a></div>')
+							cont++;
+						}
+						
 					})
+					pos = cont;
 				}
 		});
 	}

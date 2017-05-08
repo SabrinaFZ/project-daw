@@ -146,5 +146,30 @@ public class AdminController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value={"/admin/movies/{id}"}, method = RequestMethod.PUT)
+	public ModelAndView updateMovie(@Valid @ModelAttribute("movie") MovieModel movie, BindingResult result, Model model, @PathVariable int id){
+		ModelAndView modelAndView = new ModelAndView();
+			
+		if(result.hasErrors()){
+			modelAndView.setViewName("/components/admin/movieInfo");
+		}
+		
+		MovieModel oldInfo = movieService.getMovieRepository().findOne(id);
+		if(movie.getTitle() != "" && movie.getUrl_movie() !=""){
+			oldInfo.setTitle(movie.getTitle());
+			oldInfo.setDescription(movie.getDescription());
+			oldInfo.setDirector(movie.getDirector());
+			oldInfo.setUrl_cover(movie.getUrl_cover());
+			oldInfo.setRating(movie.getRating());
+			oldInfo.setUrl_movie(movie.getUrl_movie());
+			oldInfo.setCast(movie.getCast());
+			oldInfo.setYear(movie.getYear());
+			movieService.saveMovie(oldInfo);
+		}
+				
+		modelAndView.setViewName("/components/admin/movieInfo");
+		return modelAndView;
+	}
+	
 
 }
