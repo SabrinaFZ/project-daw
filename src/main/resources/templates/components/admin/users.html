@@ -1,8 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Admin</title>
-		
+		<title>Admin - Users </title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="user-scalable = no"/>
@@ -11,7 +10,7 @@
 	    <script src="http://code.jquery.com/jquery.js"></script>
 	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   	   
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   
 	    <!-- Latest compiled and minified CSS-->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />		
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
@@ -38,7 +37,7 @@
 				       <span class="icon-bar"></span>
 				       <span class="icon-bar"></span>
 				      </button>
-				      <a class="navbar-brand" href="#">
+				      <a class="navbar-brand" th:href="@{/admin}">
 				        iRentMovies
 				      </a>
 				  </div>
@@ -67,18 +66,37 @@
 					        </ul>					      
 				    	</div>
 				   </div>
-			  </nav>		  			 
+			  </nav>		  			  
 			  <div class="container">
+			  	<div class="pull-right" id="add">
+			  		<form th:action="@{/admin/users/signup}" method="GET">
+				  		<button type="submit" class="btn btn-primary btn-md outline" >
+				  			 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add User
+				  		</button>
+			  		</form>	
+			  	</div>
+			  	<form class="form-inline" th:object="${searchUser}" th:action="@{/admin/users/search}" method="POST" role="search">
+					  <div class="form-group">
+					    <input style="width:80%;" th:field="*{username}" type="text" class="form-control" placeholder="Search" />
+					    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+					  </div>					  
+				</form>	
 			  	<table class="table table-hover">
-			  		<caption> Application </caption>			  		
-			  		<tbody>
-			  			<tr>
-			  				<td> <a th:href="@{/admin/users}"> Users </a></td>
-			  			</tr>
-			  			<tr>
-			  				<td><a th:href="@{/admin/movies}"> Movies</a></td>
-			  			</tr>
-			  		</tbody>			  		
+			  		<caption> Users </caption>	  		
+		  			<thead>
+		  				<tr>
+			  				<th>#</th>
+					    	<th>Email</th>
+					    	<th>Username</th>
+				    	</tr>
+		  			</thead>
+					<tbody>
+						<tr th:each="user : ${users}">
+					        <td><a th:text="${user.id}" th:href="@{/admin/users/{path}(path=${user.id})}"></a></td>
+					        <td th:text="${user.email}"></td>
+					        <td th:text="${user.username}"></td>
+	    				</tr>
+					</tbody>  		  		
 			  	</table>
 			  </div>
 			</div>

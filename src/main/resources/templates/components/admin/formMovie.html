@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
-		<title>Sign Up</title>
+		<title>Admin - Movies </title>
 		<meta charset="utf-8"/>
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 	    <meta name="viewport" content="user-scalable = no"/>
 	    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 	    
 	    <script src="http://code.jquery.com/jquery.js"></script>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>	   
+	    <script th:src="@{/js/components/admin/formMovie.js}"></script>
 	    
 	    <!-- Latest compiled and minified CSS-->
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous" />		
@@ -24,11 +25,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 		<link rel="stylesheet" type="text/css" th:href="@{/css/admin.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
-	</head>
-	
-	<body>
-		<div id="irm-admin">
-			  <nav class="navbar navbar-default navbar-fixed-top">
+		</head>
+		
+		<body>			
+			<div id="irm-admin">
+			   <nav class="navbar navbar-default navbar-fixed-top">
 				  <div class="container">
 				   <div class="navbar-header">
 				   	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapse-1" aria-expanded="false">
@@ -66,27 +67,54 @@
 					        </ul>					      
 				    	</div>
 				   </div>
-			  </nav>		  		
-		  <div class="container">
-		  		<div class="col-md-6 col-md-offset-3">
-		  			<form action="#" th:action="@{/admin/users/signup}" method="POST" th:object="${user}" class="form-horizontal">
+			  </nav>		  			  
+			  <div class="container">
+			  	<div class="col-md-6 col-md-offset-3">
+		  			<form action="#" th:action="@{/admin/movies/formMovie}" method="POST" th:object="${movie}" class="form-horizontal">
 			  			<div class="form-group">	  				
-		  					<label> Email: </label>
-			  				<input type="text" th:field="*{email}" placeholder="Insert your email" class="form-control" />
-			  				<p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></p>
+		  					<label> Title of the movie: </label>
+			  				<input type="text" th:field="*{title}" placeholder="Insert a title" class="form-control" />
+			  				<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="validation-message"></p>
 				  		</div>
 				  		<div class="form-group">		  				
-		  					<label> User Name: </label>
-			  				<input type="text" th:field="*{username}" placeholder="Insert your username" class="form-control" />		  			
-				  			<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="validation-message"></p>
+		  					<label> Url of the movie: </label>
+			  				<input type="text" th:field="*{url_movie}" placeholder="Insert an url" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('url_movie')}" th:errors="*{url_movie}" class="validation-message"></p>
 				  		</div>
-				  		<div class="form-group">
-		  					<label> Password: </label>
-			  				<input type="password" th:field="*{password}" placeholder="Insert your password" class="form-control" />
-				  			<p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="validation-message"></p>
+				  		<div class="form-group">		  				
+		  					<label> Description: </label>
+			  				<input type="text" th:field="*{description}" placeholder="Insert a description" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="validation-message"></p>
 				  		</div>
-				  		<div align="center" class="signUpButton">
-							<button class="btn btn-primary btn-md outline" name="Submit" value="SignUp" type="Submit" th:text="Submit"></button>	
+				  		<div class="form-group">		  				
+		  					<label> Year: </label>
+			  				<input type="text" th:field="*{year}" placeholder="i.e 2016" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('year')}" th:errors="*{year}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Director: </label>
+			  				<input type="text" th:field="*{director}" placeholder="Insert a director name" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('director')}" th:errors="*{director}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group" id="cast">		  						  					
+		  					<label> Cast: </label>
+		  					<br />
+		  					<button class="btn btn-sm btn-primary btn-md outline" type="button" id="add_cast_member"><span class="glyphicon glyphicon-plus"> Add Cast Member</span></button>
+						    <input type="text" th:field="*{cast}" name = "cast[0]" placeholder="Insert a cast member" id="default" class="form-control" />		  			
+			  				<p th:if="${#fields.hasErrors('cast')}" th:errors="*{cast}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Poster: </label>
+			  				<input type="text" th:field="*{url_cover}" placeholder="Insert a cover url" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('url_cover')}" th:errors="*{url_cover}" class="validation-message"></p>
+				  		</div>
+				  		<div class="form-group">		  				
+		  					<label> Rating: </label>
+			  				<input type="text" th:field="*{rating}" placeholder="Insert a rating (0-10)" class="form-control" />		  			
+				  			<p th:if="${#fields.hasErrors('rating')}" th:errors="*{rating}" class="validation-message"></p>
+				  		</div>
+				  		<div align="center" class="createMovieButton">
+							<button class="btn btn-primary btn-md outline" name="Submit" value="createMovieButton" type="Submit" th:text="Submit"></button>	
 						</div>
 						<br/>
 						<div align="center">
@@ -94,14 +122,11 @@
 							</span>								
 						</div>
 						<div align="center">
-							<p> <a th:href="@{/admin/users}" method="GET">Go back</a></p>
+							<p> <a th:href="@{/admin/movies}">Go back</a></p>
 						</div>				
 		  			</form>
-		  		</div>
-		  	</div>
-		  </div>
-	</body>
-	<footer class="footer-site">
-		<p> &copy; iRentMovies 2017 </p> 
-	</footer> 
+		  		</div>		  	
+			  </div>
+			</div>
+		</body>
 </html>

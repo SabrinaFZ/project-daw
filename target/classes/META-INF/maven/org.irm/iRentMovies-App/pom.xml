@@ -59,6 +59,15 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core </groupId>
+			<artifactId>jackson-databind </artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.squareup.retrofit </groupId>
+			<artifactId>retrofit</artifactId>
+			<version>1.7.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -20,6 +20,12 @@ public class MovieServiceImplementation implements MovieService {
 	public MovieModel findByTitle(String title) {
 		return movieRepository.findByTitle(title);
 	}//findByName
+	
+	
+	@Override
+	public MovieRepository getMovieRepository() {
+		return movieRepository;
+	}
 
 	@Override
 	public void saveMovie(MovieModel movie) {
@@ -28,6 +34,12 @@ public class MovieServiceImplementation implements MovieService {
 		
 		movieRepository.save(movie);
 	}//saveMovie
+
+	@Override
+	public MovieModel findByTitleIgnoreCase(String title) {
+		// TODO Auto-generated method stub
+		return movieRepository.findByTitleIgnoreCase(title);
+	}
 
 
 	// TODO Otros metodos de busqueda de peliculas: year, director, valoration,
