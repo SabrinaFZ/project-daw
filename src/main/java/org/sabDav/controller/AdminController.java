@@ -8,6 +8,7 @@ import org.sabDav.model.UserModel;
 import org.sabDav.service.MovieService;
 import org.sabDav.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -155,19 +156,54 @@ public class AdminController {
 		}
 		
 		MovieModel oldInfo = movieService.getMovieRepository().findOne(id);
-		if(movie.getTitle() != "" && movie.getUrl_movie() !=""){
+		if(movie.getTitle() != ""){
 			oldInfo.setTitle(movie.getTitle());
-			oldInfo.setDescription(movie.getDescription());
-			oldInfo.setDirector(movie.getDirector());
-			oldInfo.setUrl_cover(movie.getUrl_cover());
-			oldInfo.setRating(movie.getRating());
-			oldInfo.setUrl_movie(movie.getUrl_movie());
-			oldInfo.setCast(movie.getCast());
-			oldInfo.setYear(movie.getYear());
-			movieService.saveMovie(oldInfo);
+			
 		}
+		
+		if(movie.getUrl_movie() !=""){
+			oldInfo.setUrl_movie(movie.getUrl_movie());
+		}
+		
+		oldInfo.setDescription(movie.getDescription());
+		oldInfo.setDirector(movie.getDirector());
+		oldInfo.setUrl_cover(movie.getUrl_cover());
+		oldInfo.setRating(movie.getRating());		
+		oldInfo.setCast(movie.getCast());
+		oldInfo.setYear(movie.getYear());
+		movieService.saveMovie(oldInfo);
 				
 		modelAndView.setViewName("/components/admin/movieInfo");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value={"/admin/users/{id}"}, method = RequestMethod.PUT)
+	public ModelAndView updateUser(@Valid @ModelAttribute("user") UserModel user, BindingResult result, Model model, @PathVariable int id){
+		ModelAndView modelAndView = new ModelAndView();
+			
+		if(result.hasErrors()){
+			modelAndView.setViewName("/components/admin/userInfo");
+		}
+		
+		UserModel oldInfo = userService.getUserRepository().findOne(id);
+		if(user.getUsername() != ""){
+			oldInfo.setUsername(user.getUsername());
+		}
+		
+		if(user.getEmail() != ""){
+			oldInfo.setEmail(user.getEmail());
+		}
+		
+		if(user.getPassword() != ""){
+			System.out.println(user.getPassword());
+			oldInfo.setPassword(new BCryptPasswordEncoder().encode(user.getPassword()));
+			System.out.println(oldInfo.getPassword());
+		}
+		
+		userService.getUserRepository().save(oldInfo);
+		
+				
+		modelAndView.setViewName("/components/admin/userInfo");
 		return modelAndView;
 	}
 	

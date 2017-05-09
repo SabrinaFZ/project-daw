@@ -11,8 +11,6 @@ $(function() {
 
 	$('#add_cast_member').on("click", function (e) {
 		e.preventDefault();
-		console.log(1);
-		console.log(pos);
 		pos++;
 		var aux = pos.toString();
 		var input = '<div class="input-group" id="castMember"><input type="text" th:field="*{cast}" name = "cast['+aux+']" placeholder="Insert a cast member" class="form-control" /> <a href="#" class="delete  pull-right">Delete</a></div>'
@@ -20,7 +18,6 @@ $(function() {
 	});
 	
 	$('#cast').on("click",".delete", function(e){
-		console.log(2);
         e.preventDefault(); $(this).parent('div').remove();
         pos--;
     })
@@ -38,10 +35,8 @@ $(function() {
 			
 			//Get the poster
 			var modelAttr = $("#posterUrl").val();
-			console.log(modelAttr)
 			
 			if(modelAttr == ""){
-				console.log(4)
 				var img = '<img class="rounded" style="width:100%;height:auto;"  src="" alt="${movie.title}" />'				
 				$('#image').append(img)
 				$("#image img").attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
@@ -49,14 +44,12 @@ $(function() {
 			}else{				
 				 $.ajax(modelAttr, {
 				      success: function(data) {
-				    	  console.log(5)
 				    	  var img = '<img class="rounded" style="width:100%;height:auto;" src="" th:alt="${movie.title}" />'
 						  $('#image').append(img)
 						  $("#image img").attr('src',modelAttr);
 				    	  $("#posterName").attr('value', modelAttr)
 				      },
 				      error: function() {
-				    	  console.log(6)
 				    	  var img = '<img class="rounded" style="width:100%;height:auto;" th:field="*{url_cover}" src="" th:alt="${movie.title}" />'
 						  $('#image').append(img);
 				    	  $("#posterName").attr('value', modelAttr)
@@ -94,7 +87,6 @@ $(function() {
 				
 				if($('#castMember').val() == "[]"){
 					var cont=0;	
-					console.log(3);
 					data.cast.forEach( function (cast_member){
 						$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+cast_member.name+'"></input><a href="#" class="delete  pull-right">Delete</a></div>');
 						cont++;
@@ -105,9 +97,7 @@ $(function() {
 					cast = cast.replace(/[\[\]]+/g,'') //Replace brackets to ''
 					var array = cast.split(", "); //split the cast members
 					var cont=0;
-					console.log(array)
 					array.forEach(function(castMember){
-						console.log(castMember)
 						if(castMember != "null"){
 							$('#cast').append('<div class="input-group" id="castMember"><input class="form-control" th:field="*{cast}" type="text" name="cast['+cont+']" value="'+castMember+'"></input><a href="#" class="delete  pull-right">Delete</a></div>')
 							cont++;
