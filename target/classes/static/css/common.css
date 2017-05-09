@@ -62,3 +62,20 @@ a:hover, a:focus{
 	text-shadow: 1px 1px #AFEEEE;
 }
 
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:visited, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:visited {
+    color: white;
+    background-color: #48D1CC !important;	
+}
+
+ul.nav a:hover {
+	color: white; background-color: #48D1CC !important;
+	}
+
+
+ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
+  color: white;	
+  background-color: #48D1CC !important;
+  background-image: none;
+  background-repeat: no-repeat;
+  box-shadow: none;
+}
