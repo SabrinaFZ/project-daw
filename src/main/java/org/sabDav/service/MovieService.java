@@ -10,6 +10,7 @@ public interface MovieService {
 
 	public MovieModel findById(int id);
 	public MovieModel findByTitle(String title);
+	public MovieModel findByTitleIgnoreCase(String title);
 
 	public MovieRepository getMovieRepository();
 	

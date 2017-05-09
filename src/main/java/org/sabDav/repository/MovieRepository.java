@@ -11,6 +11,7 @@ public interface MovieRepository extends JpaRepository<MovieModel, Integer>{
 	public MovieModel findById(int id);
 	public MovieModel findByTitle(String title);
 	//TODO Otros metodos de busqueda de peliculas: year, director, valoration, ...	
+	public MovieModel findByTitleIgnoreCase(String title);
 	
    
 	

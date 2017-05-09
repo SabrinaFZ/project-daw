@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,7 @@ public class AdminController {
 	public ModelAndView getAllUsers(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("users", userService.getUserRepository().findAll());
+		modelAndView.addObject("searchUser", new UserModel());
 		modelAndView.setViewName("/components/admin/users");
 		return modelAndView;
 	}
@@ -58,6 +60,7 @@ public class AdminController {
 		userService.getUserRepository().delete(user);
 		modelAndView.setViewName("/components/admin/users");
 		modelAndView.addObject("users", userService.getUserRepository().findAll());
+		modelAndView.addObject("searchUser", new UserModel());
 		return modelAndView;
 	}
 	
@@ -95,6 +98,7 @@ public class AdminController {
 	public ModelAndView getAllMovies(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("movies", movieService.getMovieRepository().findAll());
+		modelAndView.addObject("searchMovie", new MovieModel());
 		modelAndView.setViewName("/components/admin/movies");
 		return modelAndView;
 	}
@@ -144,6 +148,7 @@ public class AdminController {
 		movieService.getMovieRepository().delete(movie);
 		modelAndView.setViewName("/components/admin/movies");
 		modelAndView.addObject("movies", movieService.getMovieRepository().findAll());
+		modelAndView.addObject("searchMovie", new MovieModel());
 		return modelAndView;
 	}
 	
@@ -207,5 +212,20 @@ public class AdminController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value={"/admin/users/search"}, method = RequestMethod.POST)
+	public ModelAndView searchUser(@Valid @ModelAttribute("searchUser") UserModel user, BindingResult result, Model model){
+		ModelAndView modelAndView = new ModelAndView();
+		model.addAttribute("users", userService.getUserRepository().findByUsername(user.getUsername()));		
+		modelAndView.setViewName("/components/admin/users");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value={"/admin/movies/search"}, method = RequestMethod.POST)
+	public ModelAndView searchMovie(@Valid @ModelAttribute("searchMovie") MovieModel movie, BindingResult result, Model model){
+		ModelAndView modelAndView = new ModelAndView();
+		model.addAttribute("movies", movieService.getMovieRepository().findByTitleIgnoreCase(movie.getTitle()));		
+		modelAndView.setViewName("/components/admin/movies");
+		return modelAndView;
+	}
 
 }

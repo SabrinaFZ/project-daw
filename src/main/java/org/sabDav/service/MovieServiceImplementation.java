@@ -35,6 +35,12 @@ public class MovieServiceImplementation implements MovieService {
 		movieRepository.save(movie);
 	}//saveMovie
 
+	@Override
+	public MovieModel findByTitleIgnoreCase(String title) {
+		// TODO Auto-generated method stub
+		return movieRepository.findByTitleIgnoreCase(title);
+	}
+
 
 	// TODO Otros metodos de busqueda de peliculas: year, director, valoration,
 	// ...
