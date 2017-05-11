@@ -23,8 +23,23 @@
 				var movies = [[${movies}]];
 				console.log(movies)
 				
+				function reposition() {
+			        var modal = $(this),
+			        dialog = modal.find('.modal-dialog');
+			        modal.css('display', 'block');
+			        
+			        // Dividing by two centers the modal exactly, but dividing by three 
+			        // or four works better for larger screens.
+			        dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+			    }
+				
 				if(movies==null){
-					$('#infoResult').append('<tr><td style="text-align=center;"><p>Ups! There is no movie with that title. Try again!</p></td></tr>')
+					$('.modal').on('show.bs.modal', reposition)
+					$(".modal").modal('show')
+					$(window).on('resize', function() {
+			        	$('.modal:visible').each(reposition);
+			    }); 
+					//$('#infoResult').append('<tr><td style="text-align=center;"><p>Ups! There is no movie with that title. Try again!</p></td></tr>')
 				}
 				
 				else if (!(movies instanceof Array)){
@@ -182,8 +197,8 @@
 				   </div>
 			  </nav>		  			 
 			  <div class="container">
-			  <div class="col-sm-6 col-md-6 col-xs-12 col-sm-offset-3 col-md-offset-3">
-			  	<input id="movies" type="hidden" th:value="${movies}" />
+				<div class="col-sm-6 col-md-6 col-xs-12 col-sm-offset-3 col-md-offset-3">
+				  	<input id="movies" type="hidden" th:value="${movies}" />
 			  	<table class="table table-hover">
 			  		<thead>
 			  			<tr>
@@ -194,6 +209,19 @@
 					<tbody id="infoResult">										
 					</tbody>  		  		
 			  	</table>
+			  	<div class="modal fade" id="myModal">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title">Error</h5>
+					      </div>
+					      <div class="modal-body">
+					        <p>Ups, No movie found!</p>
+					        <p>Try again!</p>
+					      </div>
+					    </div>
+					  </div>
+					</div>
 			  </div>			  	
 			</div>
 		  </div>

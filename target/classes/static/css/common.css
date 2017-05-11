@@ -87,3 +87,21 @@ ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
 .text-left{
 	text-align: left;
 }
+
+.modal-header {
+	background-color: #FF1C19;
+	
+}
+
+.modal-header .modal-title{
+	font-size: 80; 
+	font-weight:bold; 
+}
+
+.modal-body{
+	text-align:center;
+}
+
+.modal {
+   background-color: rgba(0, 0, 0, 0.6);
+}
