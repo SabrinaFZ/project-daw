@@ -45,6 +45,11 @@ img {
 	font-size: 50px;
 }
 
+table tr td img {
+	width: 30%;
+	height: auto;
+}
+
 @keyframes slidein {
   from {
     margin-left: 100%;

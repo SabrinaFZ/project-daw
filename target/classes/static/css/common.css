@@ -79,3 +79,11 @@ ul.nav.navbar-nav .dropdown.open .dropdown-toggle{
   background-repeat: no-repeat;
   box-shadow: none;
 }
+
+.text-right{
+	text-align: right;
+}
+
+.text-left{
+	text-align: left;
+}

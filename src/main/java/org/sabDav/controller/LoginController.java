@@ -3,6 +3,7 @@ package org.sabDav.controller;
 import javax.validation.Valid;
 
 import org.sabDav.configuration.SecurityConfiguration;
+import org.sabDav.model.MovieModel;
 import org.sabDav.model.UserModel;
 import org.sabDav.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,6 @@ public class LoginController {
 	public ModelAndView login(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/components/login/login");
-		return modelAndView;
-	}
-	
-	
-	@Secured({ "ROLE_USER", "ROLE_ADMIN" })
-	@RequestMapping(value="/home", method = RequestMethod.GET)
-	public ModelAndView home(){
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("home");
 		return modelAndView;
 	}
 	
