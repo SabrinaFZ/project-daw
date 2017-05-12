@@ -52,7 +52,7 @@
 							$('#infoResult').append('<tr id="'+movieTitle+'Row"><td id="'+movieTitle+'"><p>'+movie.title+'</p></td></tr>')
 
 							var modelAttr = movie.url_cover;
-							console.log(modelAttr)				
+				
 							if(modelAttr == null){
 								var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 								$('#'+movieTitle+'').append(img)
@@ -96,9 +96,8 @@
 								$('#infoResult').append('<tr id="'+movieTitle+'Row"><td id="'+movieTitle+'"><p>'+movie.title+'</p></td></tr>')
 
 								var modelAttr = movie.url_cover;
-								console.log(modelAttr)				
-								if(modelAttr == null){
-									console.log("entro2")
+								tr)				
+								if(modelAttr == null){									
 									var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 									$('#'+movieTitle+'').append(img)
 									$('#'+movieTitle+' img').attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
@@ -110,7 +109,6 @@
 								
 								function getMovies(){
 									pos++;
-									console.log(pos)
 									return movies[pos-1];
 									
 								}
