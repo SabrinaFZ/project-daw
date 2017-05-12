@@ -10,24 +10,16 @@
 		</div>
 		<div class="container">
 			<div class="col-md-6 col-md-offset-3">
-				<form action="#" th:action="@{/search}" method="POST"
-					th:object="${form}" class="form-horizontal">
-					<div class="form-group">
-						<label> Title: </label> <input type="text" th:field="*{title}"
-							placeholder="Insert the title of the movie." class="form-control" />
-						<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
-							class="validation-message"></p>
-					</div>
-					<div align="center" class="searchButton">
-						<button class="btn btn-primary btn-md outline" name="Submit"
-							value="Search" type="Submit" th:text="Submit"></button>
-					</div>
-					<br />
-					<div align="center">
-						<span class="successMessage" th:utext="${successMessage}">
-						</span>
-					</div>
-				</form>
+				<a th:href="@{/search/title}"> Search by title.</a>
+				<br />
+				<a th:href="@{/search/director}"> Search by director.</a>
+				<br />
+				<a th:href="@{/search/year}"> Search by year.</a>
+				<br />
+				<a th:href="@{/search/rating}"> Search by rating.</a>
+				<br />
+				<br />
+				<a th:href="@{/home}"> Go to Home.</a>
 			</div>
 		</div>
 	</div>

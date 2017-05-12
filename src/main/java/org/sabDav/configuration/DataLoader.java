@@ -33,10 +33,22 @@ public class DataLoader {
 		
 		MovieModel movie1 = new MovieModel("Inception");
 		movie1.setUrl_movie("https://www.youtube.com/embed/8hP9D6kZseM");
+		movie1.setUrl_cover("http://pics.filmaffinity.com/inception-652954101-mmed.jpg");
+		movie1.setDirector("Christopher Nolan");
+		movie1.setYear(2010);
+		movie1.setRating(8);
 		MovieModel movie2 = new MovieModel("Avatar");		
 		movie2.setUrl_movie("https://www.youtube.com/embed/tLylzuf1MWA");
+		movie2.setUrl_cover("http://pics.filmaffinity.com/avatar-208925608-mmed.jpg");
+		movie2.setDirector("James Cameron");
+		movie2.setYear(2009);
+		movie2.setRating(7);
 		MovieModel movie3 = new MovieModel("The Dark Knight");
 		movie3.setUrl_movie("https://www.youtube.com/embed/EXeTwQWrcwY");
+		movie3.setUrl_cover("http://pics.filmaffinity.com/the_dark_knight-102763119-mmed.jpg");
+		movie3.setDirector("Christopher Nolan");
+		movie3.setYear(2008);
+		movie3.setRating(8);
 		movieRepository.save(movie1);
 		movieRepository.save(movie2);
 		movieRepository.save(movie3);
