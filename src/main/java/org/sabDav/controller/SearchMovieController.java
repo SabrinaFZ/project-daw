@@ -1,6 +1,5 @@
 package org.sabDav.controller;
 
-
 import java.util.List;
 
 import javax.validation.Valid;
@@ -38,7 +37,7 @@ public class SearchMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MovieModel> movies = movieService.findByTitleContainingIgnoreCaseOrderByTitleAsc(input);
-		if(movies == null){
+		if(movies.isEmpty()){
 			modelAndView.setViewName("/components/movie/notFound");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie with this name.");
@@ -63,10 +62,9 @@ public class SearchMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MovieModel> movies = movieService.findByTitleContainingIgnoreCaseOrderByTitleAsc(form.getTitle());
-		if(movies == null){
-			result.rejectValue("title", "error.form", "* There is no movie with the title provided");
-		}//if
-		if(result.hasErrors()){
+		if(movies.isEmpty()){
+			modelAndView.setViewName("/components/movie/notFound");
+		} else if (result.hasErrors()){
 			modelAndView.setViewName("/components/movie/searchByTitle");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie with this name.");
@@ -91,10 +89,9 @@ public class SearchMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MovieModel> movies = movieService.findByDirectorContainingIgnoreCaseOrderByTitleAsc(form.getDirector());
-		if(movies == null){
-			result.rejectValue("director", "error.form", "* There is no movie with the director provided");
-		}//if
-		if(result.hasErrors()){
+		if(movies.isEmpty()){
+			modelAndView.setViewName("/components/movie/notFound");
+		} else if(result.hasErrors()){
 			modelAndView.setViewName("/components/movie/searchByTitle");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie of this director.");
@@ -119,10 +116,9 @@ public class SearchMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MovieModel> movies = movieService.findByYearOrderByTitleAsc(form.getYear());
-		if(movies == null){
-			result.rejectValue("year", "error.form", "* There is no movie with the year provided");
-		}//if
-		if(result.hasErrors()){
+		if(movies.isEmpty()){
+			modelAndView.setViewName("/components/movie/notFound");
+		} else if(result.hasErrors()){
 			modelAndView.setViewName("/components/movie/searchByTitle");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie of this year.");
@@ -147,10 +143,9 @@ public class SearchMovieController {
 		ModelAndView modelAndView = new ModelAndView();
 		
 		List<MovieModel> movies = movieService.findByRatingGreaterThanEqualOrderByTitleAsc(form.getRating());
-		if(movies == null){
-			result.rejectValue("rating", "error.form", "* There is no movie with the rating provided or above.");
-		}//if
-		if(result.hasErrors()){
+		if(movies.isEmpty()){
+			modelAndView.setViewName("/components/movie/notFound");
+		} else if(result.hasErrors()){
 			modelAndView.setViewName("/components/movie/searchByRating");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie of this year.");
