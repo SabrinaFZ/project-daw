@@ -47,7 +47,6 @@
 					$.ajax({
 						url : baseUrl+movie.title.replace(/ /g,"+")
 						}).then(function(data) {
-							
 							var movieTitle = movie.title.replace(/ /g,"")
 							$('#infoResult').append('<tr id="'+movieTitle+'Row"><td id="'+movieTitle+'"><p>'+movie.title+'</p></td></tr>')
 
@@ -57,26 +56,26 @@
 								var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 								$('#'+movieTitle+'').append(img)
 								$('#'+movieTitle+' img').attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
-								$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 							}else{				
-								 setMoviePoster(modelAttr, movieTitle)
+								 setMoviePoster(modelAttr, movie, movieTitle)
 							}
 							
-							function setMoviePoster(modelAttr, movieTitle){
+							function setMoviePoster(modelAttr, movie, movieTitle){
 								$.ajax(modelAttr, {
 								      success: function(data) {
 								    	  console.log("success")
 								    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 								    	  $('#'+movieTitle+'').append(img)
 										  $('#'+movieTitle+' img').attr('src',modelAttr);
-								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								      },
 								      error: function() {
 								    	  console.log("error")
 								    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 								    	  $('#'+movieTitle+'').append(img)
 										  $('#'+movieTitle+' img').attr('src',modelAttr);
-								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								      }
 								   });
 								
@@ -96,15 +95,15 @@
 								$('#infoResult').append('<tr id="'+movieTitle+'Row"><td id="'+movieTitle+'"><p>'+movie.title+'</p></td></tr>')
 
 								var modelAttr = movie.url_cover;
-								tr)				
+		
 								if(modelAttr == null){									
 									var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 									$('#'+movieTitle+'').append(img)
 									$('#'+movieTitle+' img').attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
-									$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								
 								}else{				
-									 setMoviePoster(modelAttr, movieTitle)
+									 setMoviePoster(modelAttr, movie, movieTitle)
 								}
 								
 								function getMovies(){
@@ -113,21 +112,21 @@
 									
 								}
 								
-								function setMoviePoster(modelAttr, movieTitle){
+								function setMoviePoster(modelAttr, movie, movieTitle){
 									$.ajax(modelAttr, {
 									      success: function(data) {
 									    	  console.log("success")
 									    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 											  $('#'+movieTitle+'').append(img)
 											  $('#'+movieTitle+' img').attr('src',modelAttr);
-									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 									      },
 									      error: function() {
 									    	  console.log("error")
 									    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 									    	  $('#'+movieTitle+'').append(img)
 											  $('#'+movieTitle+' img').attr('src',modelAttr);
-									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/home"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 									      }
 									   });
 									

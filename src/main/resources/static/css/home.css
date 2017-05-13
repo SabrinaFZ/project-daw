@@ -50,6 +50,51 @@ table tr td img {
 	height: auto;
 }
 
+
+.movieInfo{
+	margin-top:50px;
+}
+
+#add_cast_member{
+	margin-bottom:5px;
+}
+
+#default {
+	margin-bottom:16px;
+}
+
+#video{
+	margin-bottom:10px !important;
+}
+
+
+.panel-default > .panel-heading {
+	background-color: #48D1CC;
+    color: white;
+    background-image: none;
+  	background-repeat: no-repeat;
+}
+
+.panel-heading.collapsed{
+	background-color: #48D1CC;
+	background-image: none;
+  	background-repeat: no-repeat;	
+}
+
+.panel-heading a, .panel-heading a:visited, .panel-heading a:focus, .panel-heading a:active, .panel-heading a:hover {
+    color: white;
+}
+
+.panel-default .delete a, .panel-default .delete a:active{
+	color: #48D1CC;
+}
+
+.panel-body a:hover, .panel-body a:focus{
+	color:#48D1CC;
+	text-decoration:none;
+	font-weight:bold;
+}
+
 @keyframes slidein {
   from {
     margin-left: 100%;
