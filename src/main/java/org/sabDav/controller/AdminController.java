@@ -1,7 +1,6 @@
 package org.sabDav.controller;
 
 import javax.validation.Valid;
-import javax.websocket.server.PathParam;
 
 import org.sabDav.model.MovieModel;
 import org.sabDav.model.UserModel;
@@ -11,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;

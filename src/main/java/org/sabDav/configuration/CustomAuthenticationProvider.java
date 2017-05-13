@@ -21,7 +21,6 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	
 	@Override
 	public Authentication authenticate(Authentication authentication)throws AuthenticationException {
-		System.out.println("paso1");
 		String username = authentication.getName();
 		String password = (String) authentication.getCredentials();
 		UserModel user = userRepository.findByUsername(username);
