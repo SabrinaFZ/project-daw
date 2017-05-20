@@ -20,8 +20,6 @@ public class PlayMovieController {
 
 	@RequestMapping("/play/{id}")
     public ModelAndView playMovie(Model model, @PathVariable int id) throws MalformedURLException {
-
-		//TODO Comprobar si usuario esta logeado
 		
 		ModelAndView modelAndView = new ModelAndView();
 		MovieModel movie = movieService.findById(id);

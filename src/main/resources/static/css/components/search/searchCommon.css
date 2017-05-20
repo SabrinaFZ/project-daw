@@ -1,0 +1,46 @@
+body { padding-top: 100px; }
+
+table , th, td {
+	width:50%;
+	border: 2px solid #48D1CC ;
+	table-layout: fixed;
+}
+
+caption { 
+    display: table-caption;
+    text-align: left;
+    caption-side: top;
+    font-weight: bold;
+}
+
+.jumbotron{
+	background-color: #48D1CC;	
+	color: white;
+	text-align:center;
+}
+
+.search-again{
+	text-align:center;
+	border: 2px solid #48D1CC;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background: #FFFFFF;
+	color: #48D1CC;	
+	font-size: 200%;
+    -webkit-animation: fadein 4s;
+       -moz-animation: fadein 4s;
+        -ms-animation: fadein 4s;
+         -o-animation: fadein 4s;
+            animation: fadein 4s;
+}
+
+.searchButton{
+	text-align:center;
+	border: 2px solid #FFFFFF;
+	border-radius: 5px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background: #FFFFFF;
+	color: #48D1CC;	
+}
