@@ -44,6 +44,7 @@
 			integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
 			crossorigin="anonymous"></script>
 		
+		<link rel="stylesheet" type="text/css" th:href="@{/css/components/search/rating.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/components/search/searchCommon.css}" />
 		<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
 	</head>
@@ -92,27 +93,59 @@
 			</nav>
 	
 			<div class="container">
-				
-				<table class="table table-hover">
-			  		<caption> Search types: </caption>			  		
-			  		<tbody>
-			  			<tr>
-			  				<td> <a th:href="@{/search/title}"> Search by title.</a></td>
-			  			</tr>
-			  			<tr>
-			  				<td><a th:href="@{/search/director}"> Search by director.</a></td>
-			  			</tr>
-			  			<tr>
-			  				<td><a th:href="@{/search/year}"> Search by year.</a></td>
-			  			</tr>
-			  			<tr>
-			  				<td><a th:href="@{/search/rating}"> Search by rating.</a></td>
-			  			</tr>
-			  		</tbody>			  		
-			  	</table>
-			
+				<div class="col-md-6 col-md-offset-3">
+					<form action="#" th:action="@{/search/options}" method="POST" th:object="${form}" class="form-horizontal">
+						<div class="form-group">
+							<label> Title: </label> <input type="text" th:field="*{title}"
+								placeholder="Insert the title of the movie. Example: Star wars" class="form-control" />
+							<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+								class="validation-message"></p>
+						</div>
+						<div class="searchButton">
+							<button class="btn btn-primary btn-md outline" name="searchType"
+								value="title" type="Submit" th:text="Submit"></button>
+						</div>
+						<div class="form-group">
+							<label> Year: </label> <input type="text" th:field="*{year}"
+								placeholder="Insert the release year of the movie. Example: 2000" class="form-control" />
+							<p th:if="${#fields.hasErrors('year')}" th:errors="*{year}"
+								class="validation-message"></p>
+						</div>
+						<div class="searchButton">
+							<button class="btn btn-primary btn-md outline" name="searchType"
+								value="year" type="Submit" th:text="Submit"></button>
+						</div>
+						<div class="form-group">
+							<label> Director: </label> <input type="text" th:field="*{director}"
+								placeholder="Insert the director of the movie. Example: Steven Spielberg" class="form-control" />
+							<p th:if="${#fields.hasErrors('director')}" th:errors="*{director}"
+								class="validation-message"></p>
+						</div>
+						<div class="searchButton">
+							<button class="btn btn-primary btn-md outline" name="searchType"
+								value="director" type="Submit" th:text="Submit"></button>
+						</div>
+						<label> Rating: </label> <br />
+						<fieldset class="rating">
+						    <input type="radio" id="star10" name="rating" value="10" /><label class = "full" for="star10" title="Perfect - 10 stars"></label>
+						    <input type="radio" id="star9" name="rating" value="9" /><label class="full" for="star9" title="Excellent - 9 stars"></label>
+						    <input type="radio" id="star8" name="rating" value="8" /><label class = "full" for="star8" title="Very good - 8 stars"></label>
+						    <input type="radio" id="star7" name="rating" value="7" /><label class="full" for="star7" title="Good - 7 stars"></label>
+						    <input type="radio" id="star6" name="rating" value="6" /><label class = "full" for="star6" title="Not bad - 6 stars"></label>
+						    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Average - 5 stars"></label>
+						    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Nice try - 4 stars"></label>
+						    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Bad - 3 stars"></label>
+						    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Awful - 2 stars"></label>
+						    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Do not want - 1 stars"></label>
+						    <input type="radio" id="star0" name="rating" value="0" /><label for="star0" title="Unrated - 0 stars"></label>
+						</fieldset>
+						<div class="searchButton">
+							<button class="btn btn-primary btn-md outline" name="searchType"
+								value="rating" type="Submit" th:text="Submit"></button>
+						</div>
+					</form>
+				</div>
 			</div>
-	
 		</div>
 	</body>
 </html>
