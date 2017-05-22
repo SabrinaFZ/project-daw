@@ -46,114 +46,52 @@ public class SearchMovieController {
 		} //if
 		return modelAndView;	
     }//searchMovieSubmit
-
-	@RequestMapping(value = "search/title", method = RequestMethod.GET)
-    public ModelAndView SearchByTitleMovieForm() {		
-		ModelAndView modelAndView = new ModelAndView();
-		FormModel form = new FormModel();
-		modelAndView.addObject("form", form);		
-		modelAndView.setViewName("/components/movie/searchByTitle");
-		return modelAndView;
-    }//SearchByTitleMovieForm
-
-	@RequestMapping(value="search/title", method = RequestMethod.POST)
-    public ModelAndView SearchByTitleSubmit(@Valid @ModelAttribute("form") FormModel form, BindingResult result, Model model){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		List<MovieModel> movies = movieService.findByTitleContainingIgnoreCaseOrderByTitleAsc(form.getTitle());
-		if(movies.isEmpty()){
-			modelAndView.setViewName("/components/movie/notFound");
-		} else if (result.hasErrors()){
-			modelAndView.setViewName("/components/movie/searchByTitle");
-		} else {
-			modelAndView.addObject("successMessage", "There is at least one movie with this name.");
-			model.addAttribute("movies", movies);
-			modelAndView.setViewName("/components/movie/result");
-		} //if
-		return modelAndView;		
-    }//SearchByTitleSubmit
 	
-	@RequestMapping(value = "search/director", method = RequestMethod.GET)
-    public ModelAndView SearchByDirectorMovieForm() {		
-		ModelAndView modelAndView = new ModelAndView();
+	@RequestMapping(value = "search/options", method = RequestMethod.GET)
+    public ModelAndView searchOptionsForm() {		
+		ModelAndView modelAndView = new ModelAndView();	
 		FormModel form = new FormModel();
-		modelAndView.addObject("form", form);		
-		modelAndView.setViewName("/components/movie/searchByDirector");
+		modelAndView.addObject("form", form);
+		modelAndView.setViewName("/components/movie/search");
 		return modelAndView;
-    }//SearchByDirectorMovieForm
+    }//searchOptionsForm
 
-	@RequestMapping(value="search/director", method = RequestMethod.POST)
-    public ModelAndView SearchByDirectorSubmit(@Valid @ModelAttribute("form") FormModel form, BindingResult result, Model model){
+	@RequestMapping(value="search/options", method = RequestMethod.POST)
+	public ModelAndView searchOptionsSubmit(@Valid @ModelAttribute("form") FormModel form, BindingResult result, 
+			 @RequestParam(value="searchType", required=true) String searchType, Model model){
 		
 		ModelAndView modelAndView = new ModelAndView();
+		List<MovieModel> movies = null;
 		
-		List<MovieModel> movies = movieService.findByDirectorContainingIgnoreCaseOrderByTitleAsc(form.getDirector());
+		switch(searchType) {
+			case "title":
+				movies = movieService.findByTitleContainingIgnoreCaseOrderByTitleAsc(form.getTitle());
+	            break;
+	        case "year":
+	        	movies = movieService.findByYearOrderByTitleAsc(form.getYear());
+	            break;
+	        case "director":
+	        	movies = movieService.findByDirectorContainingIgnoreCaseOrderByTitleAsc(form.getDirector());
+	            break;
+	        case "rating":
+	        	movies = movieService.findByRatingGreaterThanEqualOrderByTitleAsc(form.getRating());
+	            break;
+	        default:
+	        	modelAndView.setViewName("/components/movie/search");
+	        	return modelAndView;
+		}//switch
+		
 		if(movies.isEmpty()){
 			modelAndView.setViewName("/components/movie/notFound");
 		} else if(result.hasErrors()){
-			modelAndView.setViewName("/components/movie/searchByTitle");
-		} else {
-			modelAndView.addObject("successMessage", "There is at least one movie of this director.");
-			model.addAttribute("movies", movies);
-			modelAndView.setViewName("/components/movie/result");
-		} //if
-		return modelAndView;		
-    }//SearchByDirectorSubmit
-	
-	@RequestMapping(value = "search/year", method = RequestMethod.GET)
-    public ModelAndView SearchByYearMovieForm() {		
-		ModelAndView modelAndView = new ModelAndView();
-		FormModel form = new FormModel();
-		modelAndView.addObject("form", form);		
-		modelAndView.setViewName("/components/movie/searchByYear");
-		return modelAndView;
-    }//SearchByYearMovieForm
-
-	@RequestMapping(value="search/year", method = RequestMethod.POST)
-    public ModelAndView SearchByYearSubmit(@Valid @ModelAttribute("form") FormModel form, BindingResult result, Model model){
-		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		List<MovieModel> movies = movieService.findByYearOrderByTitleAsc(form.getYear());
-		if(movies.isEmpty()){
-			modelAndView.setViewName("/components/movie/notFound");
-		} else if(result.hasErrors()){
-			modelAndView.setViewName("/components/movie/searchByTitle");
+			modelAndView.setViewName("/components/movie/search");
 		} else {
 			modelAndView.addObject("successMessage", "There is at least one movie of this year.");
 			model.addAttribute("movies", movies);
 			modelAndView.setViewName("/components/movie/result");
 		} //if
-		return modelAndView;		
-    }//SearchByYearSubmit
-	
-	@RequestMapping(value = "search/rating", method = RequestMethod.GET)
-    public ModelAndView SearchByRatingMovieForm() {		
-		ModelAndView modelAndView = new ModelAndView();
-		FormModel form = new FormModel();
-		modelAndView.addObject("form", form);		
-		modelAndView.setViewName("/components/movie/searchByRating");
-		return modelAndView;
-    }//SearchByRatingMovieForm
-
-	@RequestMapping(value="search/rating", method = RequestMethod.POST)
-    public ModelAndView SearchByRatingSubmit(@Valid @ModelAttribute("form") FormModel form, BindingResult result, Model model){
 		
-		ModelAndView modelAndView = new ModelAndView();
-		
-		List<MovieModel> movies = movieService.findByRatingGreaterThanEqualOrderByTitleAsc(form.getRating());
-		if(movies.isEmpty()){
-			modelAndView.setViewName("/components/movie/notFound");
-		} else if(result.hasErrors()){
-			modelAndView.setViewName("/components/movie/searchByRating");
-		} else {
-			modelAndView.addObject("successMessage", "There is at least one movie of this year.");
-			model.addAttribute("movies", movies);
-			modelAndView.setViewName("/components/movie/result");
-		} //if
 		return modelAndView;		
-    }//SearchByYearSubmit
+    }//searchOptionsSubmit
 	
-
 }//class
