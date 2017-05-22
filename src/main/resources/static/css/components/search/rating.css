@@ -1,0 +1,35 @@
+/* Ratings widget */
+.rating {
+    display: inline-block;
+    border: 0;
+}
+/* Hide radio */
+.rating > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.rating > label {
+    float: right;
+}
+/* The star of the show */
+.rating > label:before {
+    display: inline-block;
+    font-size: 2rem;
+    margin: 0;
+    cursor: pointer;
+    content: "\2605 "; /* full star */
+}
+/* Zero stars rating */
+.rating > label:last-child:before {
+    content: "\2606 "; /* empty star outline */
+}
+/* Click + hover color */
+input:checked ~ label, /* color current and previous stars on checked */
+label:hover, label:hover ~ label { color: #FFD700;  } /* color previous stars on hover */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: #FFED85;  } 
+
+
