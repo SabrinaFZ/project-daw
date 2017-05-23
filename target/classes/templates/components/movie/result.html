@@ -97,12 +97,17 @@
 					<h1>Results of the search:</h1>
 				</div>
 				
-				
 				<div class="result-list">
 					<ul>
-						<li th:each="movie : ${movies}">
-							<a th:text="${movie.getTitle()}" th:href="@{/play/{id}(id=${movie.getId()})}">'Cover'</a>	
-						</li>
+						<th:block th:each="movie : ${movies}">
+							<tr>
+								<td>
+									<a th:href="@{/play/{id}(id=${movie.getId()})}">
+										<img class="rounded" th:src="${movie.getUrl_cover()}" />
+									</a>
+								</td>
+							</tr>
+						</th:block>
 					</ul>
 				</div>
 				
