@@ -1,21 +1,16 @@
 body { padding-top: 100px; }
 
-table, th, tr, td {
-	margin: auto;
-	border: 2px solid #48D1CC ;
-	table-layout: fixed;
-}
- 
-img {
-	max-width: 20%;
-	margin: 2% 3% 3% 3%;
-}
  
 caption { 
     display: table-caption;
     text-align: left;
     caption-side: top;
     font-weight: bold;
+}
+
+table tr td img {
+	width: 30%;
+	height: auto;
 }
 
 .jumbotron{
