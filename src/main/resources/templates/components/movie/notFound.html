@@ -73,6 +73,11 @@
 								<span class="glyphicon glyphicon-search"></span>
 							</button>
 						</form>
+						<ul class="navbar-nav">
+							      <li class="nav-item">
+							        <a class="nav-link" th:href="@{/search}">Advanced Search</a>
+							      </li>
+						</ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="#"
@@ -96,9 +101,10 @@
 					<h2>Sorry, there are no results that match your search :(</h2>
 				</div>
 				
-				
-				<div class="search-again">
-					<a th:href="@{/search}">Search again</a>
+				<div class="col-sm-6 col-md-6 col-xs-12 col-sm-offset-3 col-md-offset-3">
+					<div class="search-again">
+						<a th:href="@{/search}">Search again</a>
+					</div>
 				</div>
 			</div>
 	
