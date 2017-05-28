@@ -104,7 +104,7 @@
 									    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 											  $('#'+movieTitle+'').append(img)
 											  $('#'+movieTitle+' img').attr('src',modelAttr);
-									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 									      },
 									      error: function() {
 									    	  console.log("error")
@@ -185,7 +185,7 @@
 							      <li class="nav-item">
 							        <a class="nav-link" th:href="@{/search}">Advanced Search</a>
 							      </li>
-						</ul>
+							 </ul>
 						<ul class="nav navbar-nav navbar-right">
 							<li class="nav-item dropdown"><a
 								class="nav-link dropdown-toggle" href="#"
