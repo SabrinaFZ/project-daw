@@ -1,0 +1,67 @@
+have_header: checking for dlfcn.h... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -I/opt/chef/embedded/include -O2 -O3 -g -pipe -fPIC conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -E -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -I/opt/chef/embedded/include -O2 -O3 -g -pipe -fPIC  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <dlfcn.h>
+/* end */
+
+--------------------
+
+have_library: checking for dlopen() in -ldl... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -I/opt/chef/embedded/include -O2 -O3 -g -pipe -fPIC conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘dlopen’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))dlopen; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -I/opt/chef/embedded/include -O2 -O3 -g -pipe -fPIC conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby -ldl  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void dlopen();
+14: int t(void) { dlopen(); return 0; }
+/* end */
+
+--------------------
+

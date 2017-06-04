@@ -1,0 +1,11 @@
+extconf.rb
+HISTORY
+LICENSE
+MANIFEST
+README
+README.euc
+ruby-shadow.gemspec
+pwd/shadow.c
+pwd/depend
+shadow/shadow.c
+shadow/depend

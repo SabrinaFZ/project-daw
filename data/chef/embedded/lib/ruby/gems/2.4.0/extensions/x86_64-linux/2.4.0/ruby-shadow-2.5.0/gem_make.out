@@ -1,0 +1,24 @@
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ruby-shadow-2.5.0
+/opt/chef/embedded/bin/ruby -r ./siteconf20170526-20950-1oxi0x9.rb extconf.rb
+checking for getspent() in -lshadow... no
+checking for getspent()... yes
+checking for fgetspent()... yes
+checking for setspent()... yes
+checking for endspent()... yes
+checking for lckpwdf()... yes
+checking for ulckpwdf()... yes
+checking for sgetspent()... yes
+checking for ruby/io.h... yes
+creating Makefile
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ruby-shadow-2.5.0
+make "DESTDIR=" clean
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ruby-shadow-2.5.0
+make "DESTDIR="
+compiling shadow/shadow.c
+linking shared-object shadow.so
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ruby-shadow-2.5.0
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 shadow.so ./.gem.20170526-20950-6hvd2v

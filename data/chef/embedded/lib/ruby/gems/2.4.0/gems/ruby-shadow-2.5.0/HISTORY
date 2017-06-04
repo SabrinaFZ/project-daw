@@ -1,0 +1,95 @@
+[2015/10/06]
+* Version 2.5.0
+  - fixes for compiling for rubinius, at long last
+  - TESTS
+  - add a few method aliases
+
+[2014/12/02]
+* Version 2.4.1
+  - sp_loginclass support should NOT have been added to password implementation
+[2014/12/01]
+* Version 2.4.0
+  - Add support for sp_loginclass via pwd.h
+[2014/04/28]
+* Version 2.3.3
+  - Added support for more BSDs, thanks to https://github.com/bsiegert.
+  - Simplified compatibility check, removing check for function not actually used in pwd.h implementations.
+[2014/02/25]
+[2013/12/18]
+* Version 2.3.3
+ Fix bug in shadow implementations (Linux, solaris) where sp_expired field was incorrectly set as nil.  -1 is used to indicate not set.  This was introduced 2.3.0.
+[2013/11/13]
+* Version 2.3.1
+ - Caleb Land<caleb.land@gmail.com>
+ Remove sgetspent on implementations using pwd.h
+[2013/11/13]
+* Version 2.3.0
+ - Caleb Land<caleb.land@gmail.com>
+ Merge OS X work into main gem.  Fix bugs with OS X implementation and tweak support for FreeBSD.
+ See https://github.com/caleb/ruby-shadow/commit/20d98b7d9e3bbbef0b737affd3245590096a316c
+ - Add license file to Manifest.
+[2013/02/25]
+ - Adam Palmblad<apalmblad@gmail.com>
+ Fix compilation issues with ruby 2.
+
+[2012/04/17]
+* Version 2.1.4
+ - MATSUU Takuto <matsuu@gentoo.org>
+  Change obsolete C function to its proper replacement. 
+* Version 2.1.3
+ - MATSUU Takuto <matsuu@gentoo.org>
+ Fix a typo in the C code for rb_shadow_putspent.  Typo has been present since
+ ruby 1.9 code was added.
+[2011/02/08]
+* Version 2.1.2
+ -  Jeff Blaine <>, Adam Palmblad <adam.palmblad@teampages.com>:
+   Fix issues with compiling against Solaris.  Apparently solaris does not offer sgetspent
+ compiling against ruby 1.8; fixes were made to the ruby header path.
+[2011/02/08]
+* Version 2.1.1
+ -  Eric Hankins <ssilver@stormsilver.net>: Looks like there was a minor bug in
+ compiling against ruby 1.8; fixes were made to the ruby header path.
+[2011/01/27]
+* Version 2.1
+    - Ian Marlier <imarlier@brightcove.com>: Make ruby-shadow compile under Ruby 1.9.2
+        * STR2CSTR macro was removed in Ruby 1.9.2, after being deprecated in Ruby 1.8.  Change
+          to StringValuePtr() in its place.
+
+[2010/07/27]
+* Version 2.0
+    - Adam Palmblad <adam.palmblad@teampages.com>: Make ruby-shadow compile under Ruby 1.9
+
+[1999/08/18]
+* version 1.4.1
+  - extconf.rb supports glibc2(libc6).
+  
+[1999/03/09]
+* version 1.4
+  - require ruby-1.3 or later version.
+  - sShadowPasswd,mShadow,eFileLock was renamed.
+  - FileLock class is inner class of Shadow Module.
+  - lock,unlock was changed.
+  - lock? method was added.
+  - getspent,fgetspent doesn't raise EOFError
+  - class hierarchy was changed.
+      Shadow Module
+       +  Passwd Module
+           + Entry Structure
+       +  Group Module (not implemented yet)
+           + Entry Structure (not implemented yet)
+       +  FileLock Class
+
+[1998/12/17]
+* version 1.3
+  - require ruby-1.1d0 or later version.
+
+[1998/10/31]
+* version 1.2
+  - only some bug fix.
+
+[1998/08/31]
+* version 1.1
+  - structure Shadow::ShadowPasswd is added.
+
+[1998/07/15]
+* version 1.0 released.

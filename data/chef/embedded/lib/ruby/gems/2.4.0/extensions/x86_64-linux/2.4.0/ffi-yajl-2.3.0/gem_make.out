@@ -1,0 +1,19 @@
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ffi-yajl-2.3.0/ext/ffi_yajl/ext/dlopen
+/opt/chef/embedded/bin/ruby -r ./siteconf20170526-9109-wpg716.rb extconf.rb
+-I/opt/chef/embedded/include -O2 -O3 -g -pipe -fPIC
+-L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib
+checking for dlfcn.h... yes
+checking for dlopen() in -ldl... yes
+creating Makefile
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ffi-yajl-2.3.0/ext/ffi_yajl/ext/dlopen
+make "DESTDIR=" clean
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ffi-yajl-2.3.0/ext/ffi_yajl/ext/dlopen
+make "DESTDIR="
+compiling dlopen.c
+linking shared-object ffi_yajl/ext/dlopen.so
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/ffi-yajl-2.3.0/ext/ffi_yajl/ext/dlopen
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 dlopen.so ./.gem.20170526-9109-d9o0xd/ffi_yajl/ext

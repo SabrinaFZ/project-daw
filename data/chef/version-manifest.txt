@@ -1,0 +1,26 @@
+chef 13.1.31
+
+Component               Installed Version   Version GUID                                                                                                                      Overridden From   
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+appbundler              master              git:6582b68884453b5ca5c962458a0c08046c719558                                                                                      
+bundler                 13.1.31             
+cacerts                 2017-01-18          sha256:e62a07e61e5870effa81b430e1900778943c228bd7da1259dd6a955ee2262b47                                                           
+chef                    local_source        path:/home/jenkins/workspace/chef-build/architecture/x86_64/platform/ubuntu-12.04/project/chef/role/builder/omnibus/files/../..   master            
+config_guess            master              git:84f04b02a7e2fc8eaa9d52deee5f6d57b06fe447                                                                                      
+gem-permissions         0.0.1               
+libffi                  3.2.1               md5:83b89587607e3eb65c70d361f13bab43                                                                                              
+libtool                 2.4.2               md5:d2f3b7d4627e69e13514a40e72a24d50                                                                                              2.4               
+libyaml                 0.1.6               md5:5fe00cda18ca5daeb43762b80c38e06e                                                                                              
+makedepend              1.0.5               md5:efb2d7c7e22840947863efaedc175747                                                                                              
+ohai                    master              git:be0772889c83e34151f3c7d3421cbf8ad4680c17                                                                                      
+openssl                 1.0.2j              sha256:e7aff292be21c259c6af26469c7a9b3ba26e9abaaffd325e3dccc9785256c431                                                           1.0.2k            
+openssl-customization   13.1.31             
+pkg-config-lite         0.28-1              md5:61f05feb6bab0a6bbfab4b6e3b2f44b6                                                                                              
+preparation             1.0.0               
+ruby                    2.4.1               sha256:a330e10d5cb5e53b3a0078326c5731888bb55e32c4abfeb27d9e7f8e5d000250                                                           2.1.8             
+rubygems                13.1.31             
+shebang-cleanup         0.0.2               
+util-macros             1.19.0              md5:40e1caa49a71a26e0aa68ddd00203717                                                                                              1.18.0            
+version-manifest        0.0.1               
+xproto                  7.0.28              md5:0b42843b99aee3e4f6a9cc7710143f86                                                                                              7.0.25            
+zlib                    1.2.8               md5:44d667c142d7cda120332623eab69f40                                                                                              

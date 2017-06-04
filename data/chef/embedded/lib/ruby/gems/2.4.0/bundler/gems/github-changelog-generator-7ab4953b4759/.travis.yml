@@ -1,0 +1,37 @@
+language: ruby
+cache:
+  - bundler
+before_install:
+  - gem update --system
+  - gem install bundler
+matrix:
+  include:
+    - rvm: 2.2.2
+      install: true # This skips 'bundle install'
+      script: gem build github_changelog_generator && gem install *.gem
+    - rvm: 2.2.2
+      install: true # This skips 'bundle install'
+      script: gem build github_changelog_generator && bundle install
+      gemfile: spec/install-gem-in-bundler.gemfile
+    - rvm: 2.1
+      gemfile: gemfiles/Gemfile.2_1
+    - rvm: 2.3.1
+      gemfile: gemfiles/Gemfile.2_3_1
+    - rvm: 2.4.0-preview3
+      gemfile: gemfiles/Gemfile.2_4_0
+    - rvm: jruby-9.1.6.0
+      jdk: oraclejdk8
+      gemfile: gemfiles/Gemfile.jruby-9.1
+      env:
+        - JRUBY_OPTS=--debug
+
+notifications:
+  email:
+    recipients:
+      - sky4winder+githubchangeloggenerator@gmail.com
+    on_success: never
+    on_failure: change
+addons:
+  code_climate:
+    repo_token:
+      secure: iMpV5IAvH+/EVGZrpWnt2BnmNFzSbsRcIumsr4ZyLC8N5nrCSXyjCSy0g48btL3Sj0bSgK9hcrJsmrFd2bkqFleyAcPAzNyUQzBuIRZx47O8yFmbZ+Pj+l3+KOlmcbzJNHfDfxkxuWTmTAcSDfsiyApin721T/ey3SUuwKpZNUc=

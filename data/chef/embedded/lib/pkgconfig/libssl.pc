@@ -1,0 +1,12 @@
+prefix=/opt/chef/embedded
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: OpenSSL-libssl
+Description: Secure Sockets Layer and cryptography libraries
+Version: 1.0.2j
+Requires.private: libcrypto
+Libs: -L${libdir} -lssl
+Libs.private: -Wl,-rpath,/opt/chef/embedded/lib -L/opt/chef/embedded/lib -ldl -L/opt/chef/embedded/lib -lz
+Cflags: -I${includedir} 

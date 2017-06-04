@@ -6,7 +6,7 @@
 	<groupId>org.irm</groupId>
 	<artifactId>iRentMovies-App</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>iRentMovies</name>
 	<description>Diseño de Aplicaciones Web: iRentMovies App</description>
@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
@@ -68,13 +68,23 @@
 			<artifactId>retrofit</artifactId>
 			<version>1.7.1</version>
 		</dependency>
+		<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <scope>provided</scope>
+    </dependency>
 	</dependencies>
 
 	<build>
+		<finalName>iRentMovies</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+			       <source>1.7</source>
+			       <target>1.7</target>
+			   	</configuration>
 			</plugin>
 		</plugins>
 	</build>
