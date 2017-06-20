@@ -43,7 +43,7 @@
 								var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 								$('#'+movieTitle+'').append(img)
 								$('#'+movieTitle+' img').attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
-								$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 							}else{				
 								 setMoviePoster(modelAttr, movie, movieTitle)
 							}
@@ -55,14 +55,14 @@
 								    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 								    	  $('#'+movieTitle+'').append(img)
 										  $('#'+movieTitle+' img').attr('src',modelAttr);
-								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								      },
 								      error: function() {
 								    	  console.log("error")
 								    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 								    	  $('#'+movieTitle+'').append(img)
 										  $('#'+movieTitle+' img').attr('src',modelAttr);
-								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+								    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								      }
 								   });
 								
@@ -85,7 +85,7 @@
 									var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'				
 									$('#'+movieTitle+'').append(img)
 									$('#'+movieTitle+' img').attr('src',"https://image.tmdb.org/t/p/w500/"+data.results[0].poster_path);
-									$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									$('#'+movieTitle+'Row').append('<td><a style="font-size: 100px; "href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 								
 								}else{				
 									 setMoviePoster(modelAttr, movie, movieTitle)
@@ -104,14 +104,14 @@
 									    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 											  $('#'+movieTitle+'').append(img)
 											  $('#'+movieTitle+' img').attr('src',modelAttr);
-									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px;" href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px;" href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 									      },
 									      error: function() {
 									    	  console.log("error")
 									    	  var img = '<img class="rounded" src="" alt="'+movieTitle+'" />'
 									    	  $('#'+movieTitle+'').append(img)
 											  $('#'+movieTitle+' img').attr('src',modelAttr);
-									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px;" href="/www.irentmovies.com/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
+									    	  $('#'+movieTitle+'Row').append('<td><a style="font-size: 100px;" href="/iRentMovies/play/'+movie.id+'"><span style="margin-top: 50%;"class="glyphicon glyphicon-play-circle"></span> </a></td>')
 									      }
 									   });
 									

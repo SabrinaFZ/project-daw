@@ -1,0 +1,377 @@
+have_library: checking for getspent() in -lshadow... -------------------- no
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby -lshadow  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘getspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))getspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L. -Wl,-rpath,/opt/chef/embedded/lib -fstack-protector -L/opt/chef/embedded/lib -rdynamic -Wl,-export-dynamic -L/opt/chef/embedded/lib  -Wl,-R/opt/chef/embedded/lib     -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby -lshadow  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+/usr/bin/ld: cannot find -lshadow
+collect2: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void getspent();
+14: int t(void) { getspent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for getspent()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘getspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))getspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void getspent();
+14: int t(void) { getspent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for fgetspent()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘fgetspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))fgetspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void fgetspent();
+14: int t(void) { fgetspent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for setspent()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘setspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))setspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void setspent();
+14: int t(void) { setspent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for endspent()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘endspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))endspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void endspent();
+14: int t(void) { endspent(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for lckpwdf()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘lckpwdf’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))lckpwdf; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void lckpwdf();
+14: int t(void) { lckpwdf(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for ulckpwdf()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘ulckpwdf’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))ulckpwdf; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void ulckpwdf();
+14: int t(void) { ulckpwdf(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for sgetspent()... -------------------- yes
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+conftest.c: In function ‘t’:
+conftest.c:13:57: error: ‘sgetspent’ undeclared (first use in this function)
+conftest.c:13:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: int t(void) { void ((*volatile p)()); p = (void ((*)()))sgetspent; return !p; }
+/* end */
+
+"gcc -o conftest -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19 conftest.c  -L. -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -Wl,-R/opt/chef/embedded/lib      -Wl,-R/opt/chef/embedded/lib -L/opt/chef/embedded/lib -lruby  -lpthread -lrt -ldl -lcrypt -lm   -lc"
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: /*top*/
+ 4: extern int t(void);
+ 5: int main(int argc, char **argv)
+ 6: {
+ 7:   if (argc > 1000000) {
+ 8:     printf("%p", &t);
+ 9:   }
+10: 
+11:   return 0;
+12: }
+13: extern void sgetspent();
+14: int t(void) { sgetspent(); return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for ruby/io.h... -------------------- yes
+
+"gcc -E -I/opt/chef/embedded/include/ruby-2.4.0/x86_64-linux -I/opt/chef/embedded/include/ruby-2.4.0/ruby/backward -I/opt/chef/embedded/include/ruby-2.4.0 -I. -I/opt/chef/embedded/include -O2 -O3 -g -pipe -I/opt/chef/embedded/include   -DRUBY19  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/io.h>
+/* end */
+
+--------------------
+

@@ -1,0 +1,7 @@
+DEPENDENCIES
+  apache2
+  apt
+
+GRAPH
+  apache2 (3.3.0)
+  apt (6.1.0)

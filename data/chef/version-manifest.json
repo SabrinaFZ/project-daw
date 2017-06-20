@@ -1,0 +1,211 @@
+{
+  "manifest_format": 2,
+  "software": {
+    "preparation": {
+      "locked_version": "1.0.0",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "1.0.0",
+      "license": "project_license"
+    },
+    "zlib": {
+      "locked_version": "1.2.8",
+      "locked_source": {
+        "md5": "44d667c142d7cda120332623eab69f40",
+        "url": "http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "1.2.8",
+      "license": "Zlib"
+    },
+    "cacerts": {
+      "locked_version": "2017-01-18",
+      "locked_source": {
+        "url": "https://curl.haxx.se/ca/cacert-2017-01-18.pem",
+        "sha256": "e62a07e61e5870effa81b430e1900778943c228bd7da1259dd6a955ee2262b47"
+      },
+      "source_type": "url",
+      "described_version": "2017-01-18",
+      "license": "MPL-2.0"
+    },
+    "xproto": {
+      "locked_version": "7.0.28",
+      "locked_source": {
+        "md5": "0b42843b99aee3e4f6a9cc7710143f86",
+        "url": "https://www.x.org/releases/individual/proto/xproto-7.0.28.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "7.0.28",
+      "license": "MIT"
+    },
+    "util-macros": {
+      "locked_version": "1.19.0",
+      "locked_source": {
+        "md5": "40e1caa49a71a26e0aa68ddd00203717",
+        "url": "https://www.x.org/releases/individual/util/util-macros-1.19.0.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "1.19.0",
+      "license": "MIT"
+    },
+    "config_guess": {
+      "locked_version": "84f04b02a7e2fc8eaa9d52deee5f6d57b06fe447",
+      "locked_source": {
+        "git": "https://github.com/chef/config-mirror.git"
+      },
+      "source_type": "git",
+      "described_version": "master",
+      "license": "GPL-3.0 (with exception)"
+    },
+    "pkg-config-lite": {
+      "locked_version": "0.28-1",
+      "locked_source": {
+        "md5": "61f05feb6bab0a6bbfab4b6e3b2f44b6",
+        "url": "http://downloads.sourceforge.net/project/pkgconfiglite/0.28-1/pkg-config-lite-0.28-1.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "0.28-1",
+      "license": "GPL-2.0"
+    },
+    "makedepend": {
+      "locked_version": "1.0.5",
+      "locked_source": {
+        "url": "https://www.x.org/releases/individual/util/makedepend-1.0.5.tar.gz",
+        "md5": "efb2d7c7e22840947863efaedc175747"
+      },
+      "source_type": "url",
+      "described_version": "1.0.5",
+      "license": "MIT"
+    },
+    "openssl": {
+      "locked_version": "1.0.2j",
+      "locked_source": {
+        "url": "https://www.openssl.org/source/openssl-1.0.2j.tar.gz",
+        "extract": "lax_tar",
+        "sha256": "e7aff292be21c259c6af26469c7a9b3ba26e9abaaffd325e3dccc9785256c431"
+      },
+      "source_type": "url",
+      "described_version": "1.0.2j",
+      "license": "OpenSSL"
+    },
+    "libtool": {
+      "locked_version": "2.4.2",
+      "locked_source": {
+        "md5": "d2f3b7d4627e69e13514a40e72a24d50",
+        "url": "https://ftp.gnu.org/gnu/libtool/libtool-2.4.2.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "2.4.2",
+      "license": "GPL-2.0"
+    },
+    "libffi": {
+      "locked_version": "3.2.1",
+      "locked_source": {
+        "md5": "83b89587607e3eb65c70d361f13bab43",
+        "url": "ftp://sourceware.org/pub/libffi/libffi-3.2.1.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "3.2.1",
+      "license": "MIT"
+    },
+    "libyaml": {
+      "locked_version": "0.1.6",
+      "locked_source": {
+        "url": "http://pyyaml.org/download/libyaml/yaml-0.1.6.tar.gz",
+        "md5": "5fe00cda18ca5daeb43762b80c38e06e"
+      },
+      "source_type": "url",
+      "described_version": "0.1.6",
+      "license": "MIT"
+    },
+    "ruby": {
+      "locked_version": "2.4.1",
+      "locked_source": {
+        "sha256": "a330e10d5cb5e53b3a0078326c5731888bb55e32c4abfeb27d9e7f8e5d000250",
+        "url": "https://cache.ruby-lang.org/pub/ruby/2.4/ruby-2.4.1.tar.gz"
+      },
+      "source_type": "url",
+      "described_version": "2.4.1",
+      "license": "BSD-2-Clause"
+    },
+    "rubygems": {
+      "locked_version": "2.6.11",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "2.6.11",
+      "license": "MIT"
+    },
+    "bundler": {
+      "locked_version": "1.14.6",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "1.14.6",
+      "license": "MIT"
+    },
+    "ohai": {
+      "locked_version": "be0772889c83e34151f3c7d3421cbf8ad4680c17",
+      "locked_source": {
+        "git": "https://github.com/opscode/ohai.git"
+      },
+      "source_type": "git",
+      "described_version": "master",
+      "license": "Apache-2.0"
+    },
+    "appbundler": {
+      "locked_version": "6582b68884453b5ca5c962458a0c08046c719558",
+      "locked_source": {
+        "git": "https://github.com/chef/appbundler.git"
+      },
+      "source_type": "git",
+      "described_version": "master",
+      "license": "Apache-2.0"
+    },
+    "chef": {
+      "locked_version": "local_source",
+      "locked_source": {
+        "path": "/home/jenkins/workspace/chef-build/architecture/x86_64/platform/ubuntu-12.04/project/chef/role/builder/omnibus/files/../..",
+        "options": {
+          "exclude": [
+            "omnibus/vendor"
+          ]
+        }
+      },
+      "source_type": "path",
+      "described_version": "local_source",
+      "license": "Apache-2.0"
+    },
+    "gem-permissions": {
+      "locked_version": "0.0.1",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.0.1",
+      "license": "project_license"
+    },
+    "shebang-cleanup": {
+      "locked_version": "0.0.2",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.0.2",
+      "license": "project_license"
+    },
+    "version-manifest": {
+      "locked_version": "0.0.1",
+      "locked_source": null,
+      "source_type": "project_local",
+      "described_version": "0.0.1",
+      "license": "project_license"
+    },
+    "openssl-customization": {
+      "locked_version": null,
+      "locked_source": {
+        "path": "/home/jenkins/workspace/chef-build/architecture/x86_64/platform/ubuntu-12.04/project/chef/role/builder/omnibus/files/openssl-customization"
+      },
+      "source_type": "path",
+      "described_version": null,
+      "license": "project_license"
+    }
+  },
+  "build_version": "13.1.31",
+  "build_git_revision": "5bdcb43fcb9f12098d6c8d64f8163aabf9108501",
+  "license": "Apache-2.0"
+}

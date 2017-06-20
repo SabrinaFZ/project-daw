@@ -1,0 +1,5 @@
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/rainbow-2.2.2/ext
+/opt/chef/embedded/bin/ruby mkrf_conf.rb
+
+current directory: /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/rainbow-2.2.2/ext
+/opt/chef/embedded/bin/ruby -rubygems /opt/chef/embedded/lib/ruby/gems/2.4.0/gems/rake-12.0.0/exe/rake RUBYARCHDIR=/opt/chef/embedded/lib/ruby/gems/2.4.0/extensions/x86_64-linux/2.4.0/rainbow-2.2.2 RUBYLIBDIR=/opt/chef/embedded/lib/ruby/gems/2.4.0/extensions/x86_64-linux/2.4.0/rainbow-2.2.2

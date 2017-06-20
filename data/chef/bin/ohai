@@ -1,0 +1,27 @@
+#!/opt/chef/embedded/bin/ruby --disable-gems
+#--APP_BUNDLER_BINSTUB_FORMAT_VERSION=1--
+ENV["GEM_HOME"] = ENV["GEM_PATH"] = nil unless ENV["APPBUNDLER_ALLOW_RVM"] == "true"
+require "rubygems"
+::Gem.clear_paths
+
+gem "chef-config", "= 13.0.118"
+gem "addressable", "= 2.5.1"
+gem "public_suffix", "= 2.0.5"
+gem "fuzzyurl", "= 0.9.0"
+gem "mixlib-config", "= 2.2.4"
+gem "mixlib-shellout", "= 2.2.7"
+gem "ffi", "= 1.9.18"
+gem "ffi-yajl", "= 2.3.0"
+gem "libyajl2", "= 1.2.0"
+gem "ipaddress", "= 0.8.3"
+gem "mixlib-cli", "= 1.7.0"
+gem "mixlib-log", "= 1.7.1"
+gem "plist", "= 3.3.0"
+gem "systemu", "= 2.6.5"
+gem "wmi-lite", "= 1.0.0"
+gem "ohai", "= 13.1.0"
+
+spec = Gem::Specification.find_by_name("ohai", "= 13.1.0")
+bin_file = spec.bin_file("ohai")
+
+Kernel.load(bin_file)
